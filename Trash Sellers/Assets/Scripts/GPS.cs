@@ -5,15 +5,12 @@ using UnityEngine.UI;
 
 public class GPS : MonoBehaviour
 {
-    Text text;
-   
-
     public static GPS Instance { set; get; }
 
     public float latitude;
     public float longitude;
 
-    private bool ableToGetCoordinates = false;
+    public bool ableToGetCoordinates = false;
 
     private void Awake()
     {
@@ -70,7 +67,6 @@ public class GPS : MonoBehaviour
         {
             latitude = Input.location.lastData.latitude;
             longitude = Input.location.lastData.longitude;
-            text.text = GPS.Instance.latitude.ToString() + " / " + GPS.Instance.longitude.ToString();
         }
        
     }
