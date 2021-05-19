@@ -15,8 +15,10 @@ public class GPS : MonoBehaviour
 
     public bool ableToGetCoordinates = false;
 
-    public float checkDelay = 1.5f;
+    public float checkDelay = 1f;
     float lastCheck;
+
+    GameObject map;
 
     private void Awake()
     {
@@ -27,8 +29,7 @@ public class GPS : MonoBehaviour
 
     void Start()
     {
-        BasicExample map = (BasicExample)GameObject.Instantiate(Resources.Load("Prefabs/MapPart"));
-        //map.SetLatLan();
+        map = (GameObject)Instantiate(Resources.Load("Prefabs/MapPart", typeof(GameObject)));
     }
 
     private IEnumerator StartLocationService()
@@ -64,6 +65,9 @@ public class GPS : MonoBehaviour
 
         latitude = Input.location.lastData.latitude;
         longitude = Input.location.lastData.longitude;
+
+        map.GetComponent<BasicExample>().SetLatLan(new Vector2(latitude, longitude));
+
         ableToGetCoordinates = true;
 
         yield break;

@@ -37,6 +37,7 @@ namespace Google.Maps.Examples {
         }
         IEnumerator LoadMap() {
             yield return new WaitUntil(() => load);
+            print("Loading started");
             mapsService.InitFloatingOrigin(LatLng);
             mapsService.Events.MapEvents.Loaded.AddListener(OnLoaded);
             mapsService.LoadMap(ExampleDefaults.DefaultBounds, ExampleDefaults.DefaultGameObjectOptions);
