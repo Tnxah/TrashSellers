@@ -24,9 +24,8 @@ public class PlayerMovement : MonoBehaviour
         //player.position = iniRef;
         if (able)
         {
-  gameObject.GetComponent<CoordinateRecounter>().Recount();
-        }
-      
+            gameObject.GetComponent<CoordinateRecounter>().Recount();
+        }    
     }
 
     IEnumerator Init()

@@ -1,4 +1,6 @@
-﻿using Google.Maps.Examples;
+﻿using Google.Maps;
+using Google.Maps.Examples;
+using Google.Maps.Loading;
 using System;
 using System.Collections;
 using TMPro;
@@ -19,6 +21,7 @@ public class GPS : MonoBehaviour
     float lastCheck;
 
     GameObject map;
+    GameObject player;
 
     private void Awake()
     {
@@ -30,6 +33,9 @@ public class GPS : MonoBehaviour
     void Start()
     {
         map = (GameObject)Instantiate(Resources.Load("Prefabs/MapPart", typeof(GameObject)));
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        player.transform.gameObject.GetComponentInChildren<MapLoader>().MapsService = map.GetComponent<MapsService>();
     }
 
     private IEnumerator StartLocationService()
