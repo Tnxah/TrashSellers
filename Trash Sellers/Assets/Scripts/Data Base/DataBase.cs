@@ -1,4 +1,4 @@
-﻿using MySqlConnector;
+﻿using MySql.Data.MySqlClient;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,16 +30,16 @@ public class DataBase : MonoBehaviour
 
     void Start()
     {
-       conn = new MySqlConnection(ConnectionString);
-        
-            conn.Open();
+        conn = new MySqlConnection(ConnectionString);
+
+        conn.Open();
 
 
 
         Select("Select * from Item");
 
-      account = new Account();  
-      
+        account = new Account();
+
     }
 
     public void Select(string request)
@@ -57,12 +57,12 @@ public class DataBase : MonoBehaviour
                 print(reader.GetString(2));
             }
         }
-            
-        
+
+
     }
-    
+
     void Update()
     {
-        
+
     }
 }
