@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class Forms : MonoBehaviour
 {
     DataBaseConnector db;
 
-    bool SignUp = true;
+    bool SignUp = false;
     bool SignIn = false;
 
     bool remember = false;
@@ -15,15 +16,15 @@ public class Forms : MonoBehaviour
     public GameObject signUp;
     public GameObject signIn;
 
-    public InputField loginUp;
-    public InputField loginIn;
-    public InputField passwordIn;
-    public InputField passwordUp;
-    public InputField passwordUp2;
-    public InputField emailUp;
+    public GameObject loginUp;
+    public GameObject loginIn;
+    public GameObject passwordIn;
+    public GameObject passwordUp;
+    public GameObject passwordUp2;
+    public GameObject emailUp;
 
 
-    private string login;
+    private string login = "";
     private string password;
     private string password2;
     private string email;   
@@ -31,10 +32,10 @@ public class Forms : MonoBehaviour
 
     public void SignUpButton()
     {
-        login = loginUp.text;
-        password = passwordUp.text;
-        password2 = passwordUp2.text;
-        email = emailUp.text;
+        login = loginUp.GetComponent<TMP_InputField>().text;
+        password = passwordUp.GetComponent<TMP_InputField>().text;
+        password2 = passwordUp2.GetComponent<TMP_InputField>().text;
+        email = emailUp.GetComponent<TMP_InputField>().text;
 
 
 
@@ -62,8 +63,8 @@ public class Forms : MonoBehaviour
     }
     public void SignInButton()
     {
-        login = loginIn.text;
-        password = passwordIn.text;
+        login = loginIn.GetComponent<TMP_InputField>().text;
+        password = passwordIn.GetComponent<TMP_InputField>().text;
 
         if (!db.LoginExist(login))
         {
@@ -77,12 +78,24 @@ public class Forms : MonoBehaviour
 
     void FixedUpdate()
     {
-        signIn.active = SignIn;
-        signUp.active = SignUp;
+        signIn.SetActive(SignIn);
+        signUp.SetActive(SignUp);
+    }
 
+    private void Start()
+    {
+        db = GetComponent<DataBaseConnector>();
+    }
 
+    public void In()
+    {
+        SignIn = true;
+        SignUp = false;
+    }
 
-
-
+    public void Up()
+    {
+        SignUp = true;
+        SignIn = false;
     }
 }

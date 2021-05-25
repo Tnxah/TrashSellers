@@ -36,10 +36,6 @@ public class DataBaseConnector : MonoBehaviour
 
         conn.Open();
 
-
-
-        SignUp("test", "test", "test");
-
         account = new Account();
     }
 
@@ -73,6 +69,25 @@ public class DataBaseConnector : MonoBehaviour
         reader.Close();
     }
 
+    public void SignIn(string login, string password)
+    {
+        string signupform = "SELECT _id FROM Account WHERE Login = '" + login + "' AND Password = '" + password + "'";
+        string accountId;
+
+        MySqlCommand cmd = new MySqlCommand(signupform, conn);
+        reader = cmd.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            print("Logged in");
+            reader.Read();
+            accountId = reader.GetString(0);
+            print(accountId);
+        }
+        
+        reader.Close();
+    }
+
     void Update()
     {
         
@@ -80,7 +95,7 @@ public class DataBaseConnector : MonoBehaviour
 
     public bool LoginExist(string login)
     {
-        string query = "SELECT * FROM Account WHERE Email='" + login + "'";
+        string query = "SELECT * FROM Account WHERE Login='" + login + "'";
 
         MySqlCommand cmd = new MySqlCommand(query, conn);
         reader = cmd.ExecuteReader();
@@ -89,7 +104,6 @@ public class DataBaseConnector : MonoBehaviour
         {
             while (reader.Read())
             {
-                print(reader.GetString(1));
                 if (reader.GetString(1).Equals(login))
                 {
                     reader.Close();
@@ -111,7 +125,6 @@ public class DataBaseConnector : MonoBehaviour
         {
             while (reader.Read())
             {
-                print(reader.GetString(3));
                 if (reader.GetString(3).Equals(email))
                 {
                     reader.Close();
