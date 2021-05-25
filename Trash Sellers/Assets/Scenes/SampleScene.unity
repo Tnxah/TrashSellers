@@ -227,8 +227,6 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
-  - component: {fileID: 963194231}
-  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -254,7 +252,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.104574576, g: 0.4716981, b: 0.12765826, a: 0}
+  m_BackGroundColor: {r: 0.23706536, g: 0.5754717, b: 0.258898, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -294,13 +292,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.15025078, y: -0, z: -0, w: 0.98864794}
-  m_LocalPosition: {x: 0, y: 443.8, z: -130}
+  m_LocalRotation: {x: 0.5035009, y: -0, z: -0, w: 0.8639947}
+  m_LocalPosition: {x: 0, y: 316.8, z: -110}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1547745524}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 17.283, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60.464, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +306,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -1920154533, guid: 322c8874b7f0401c8c1211fe39d44d90, type: 3}
   m_Name: 
@@ -318,37 +316,6 @@ MonoBehaviour:
   RegionShape: 0
   Horizon: 1000
   UnloadUnusedSeconds: 10
---- !u!114 &963194230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83be80e0712649ceaf00345dbade2c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LatLng:
-    _Lat: -33.866
-    _Lng: 151.19600000000003
-  LoadDistance: 10
-  UnloadDistance: 100
---- !u!114 &963194231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -917775765, guid: 322c8874b7f0401c8c1211fe39d44d90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ForegroundDistance: 600
-  FalloffDistance: 300
 --- !u!1 &1054944336
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ccd5e037987a7e4481b58748e76793c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coordinates: {fileID: 0}
+  coordinates: {fileID: 1776464888}
   latitude: 0
   longitude: 0
   ableToGetCoordinates: 0
@@ -661,6 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e9a9b39b7ad5b4d9d67e8ff879fd1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: {fileID: 0}
 --- !u!1 &1776464886
 GameObject:
   m_ObjectHideFlags: 0

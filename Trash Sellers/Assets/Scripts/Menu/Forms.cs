@@ -27,9 +27,9 @@ public class Forms : MonoBehaviour
     private string login = "";
     private string password;
     private string password2;
-    private string email;   
- 
+    private string email;
 
+    public TextMeshProUGUI debug;
     public void SignUpButton()
     {
         login = loginUp.GetComponent<TMP_InputField>().text;
@@ -41,17 +41,17 @@ public class Forms : MonoBehaviour
 
         if (db.LoginExist(login))
         {
-            print("Account with this login already exists");
+            debug.text = ("Account with this login already exists");
             return;
         }
         if (db.EmailExist(email))
         {
-            print("Account with this email already exists");
+            debug.text = ("Account with this email already exists");
             return;
         }
         if (!password.Equals(password2))
         {
-            print("Passwords doesn't match");
+            debug.text = ("Passwords doesn't match");
             return;
         }
 
@@ -68,7 +68,7 @@ public class Forms : MonoBehaviour
 
         if (!db.LoginExist(login))
         {
-            print("There is no account with this login");
+            debug.text = ("There is no account with this login");
             return;
         }
 

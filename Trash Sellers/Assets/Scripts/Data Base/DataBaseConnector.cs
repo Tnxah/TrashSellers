@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DataBaseConnector : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class DataBaseConnector : MonoBehaviour
     private string dbPassword = "RM6x84SZkPKG33L";
     private string dbServer = "185.253.217.35";
     private string dbPort = "3311";
+
+    public TextMeshProUGUI debug;
 
     Account account; 
 
@@ -65,26 +69,44 @@ public class DataBaseConnector : MonoBehaviour
         MySqlCommand cmd = new MySqlCommand(signupform, conn);
         reader = cmd.ExecuteReader();
 
-        print("Account created");
+        debug.text = ("Account created");
         reader.Close();
     }
 
     public void SignIn(string login, string password)
     {
         string signupform = "SELECT _id FROM Account WHERE Login = '" + login + "' AND Password = '" + password + "'";
-        string accountId;
+        string accountId = "";
 
         MySqlCommand cmd = new MySqlCommand(signupform, conn);
         reader = cmd.ExecuteReader();
 
         if (reader.HasRows)
         {
-            print("Logged in");
-            reader.Read();
-            accountId = reader.GetString(0);
+            if (reader.Read())
+            {
+                accountId = reader.GetString(0);
+                debug.text = ("Logged in");
+            
+            
             print(accountId);
+            }
+            else
+            {
+                reader.Close();
+                return;
+            }
+            
         }
-        
+        else
+        {
+            reader.Close();
+            return;
+        }
+
+        account.Fill(accountId, login, password);
+        SceneManager.LoadScene("SampleScene");
+
         reader.Close();
     }
 
