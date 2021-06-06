@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Forms : MonoBehaviour
 {
-    DataBaseConnector db;
+    //DataBaseConnector db;
+    RegLog reglog;
 
     bool SignUp = false;
     bool SignIn = false;
@@ -39,23 +40,24 @@ public class Forms : MonoBehaviour
 
 
 
-        if (db.LoginExist(login))
-        {
-            debug.text = ("Account with this login already exists");
-            return;
-        }
-        if (db.EmailExist(email))
-        {
-            debug.text = ("Account with this email already exists");
-            return;
-        }
+        //if (db.LoginExist(login))
+        //{
+        //    debug.text = ("Account with this login already exists");
+        //    return;
+        //}
+        //if (db.EmailExist(email))
+        //{
+        //    debug.text = ("Account with this email already exists");
+        //    return;
+        //}
         if (!password.Equals(password2))
         {
             debug.text = ("Passwords doesn't match");
             return;
         }
 
-        db.SignUp(login, password, email);
+        //db.SignUp(login, password, email);
+        reglog.Register(login, email, password);
 
         SignUp = false;
         SignIn = true;
@@ -66,13 +68,14 @@ public class Forms : MonoBehaviour
         login = loginIn.GetComponent<TMP_InputField>().text;
         password = passwordIn.GetComponent<TMP_InputField>().text;
 
-        if (!db.LoginExist(login))
-        {
-            debug.text = ("There is no account with this login");
-            return;
-        }
+        //if (!db.LoginExist(login))
+        //{
+        //    debug.text = ("There is no account with this login");
+        //    return;
+        //}
 
-        db.SignIn(login, password);
+        //db.SignIn(login, password);
+        reglog.Login(login, password);
     }
 
 
@@ -84,7 +87,8 @@ public class Forms : MonoBehaviour
 
     private void Start()
     {
-        db = GetComponent<DataBaseConnector>();
+        //db = GetComponent<DataBaseConnector>();
+        reglog = GetComponent<RegLog>();
     }
 
     public void In()

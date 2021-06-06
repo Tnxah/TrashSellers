@@ -22,14 +22,12 @@ public class RegLog : MonoBehaviour
         var request = new RegisterPlayFabUserRequest
         {
             Email = email,
-            Username = login,
-            Password = password
+            //Username = login,
+            Password = password,
+            RequireBothUsernameAndEmail = false
+            
         };
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnRegisterFailure);
-
-
-
-
     }
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
@@ -43,5 +41,29 @@ public class RegLog : MonoBehaviour
         statusField.text = ("registration error");
     }
 
+    public void Login(string email, string password)
+    {
+        var request = new LoginWithEmailAddressRequest
+        {
+            Email = email,
+            Password = password
+        };
+
+        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
+
+    }
+
+    private void OnLoginSuccess(LoginResult result)
+    {
+        print("successful login");
+        statusField.text = "successful login";
+
+    }
+
+    private void OnLoginFailure(PlayFabError error)
+    {
+        print("login failed");
+        statusField.text = "login failed";
+    }
 }
 
