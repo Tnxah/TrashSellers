@@ -37,7 +37,7 @@ public class RegLog : MonoBehaviour
 
     private void OnRegisterFailure(PlayFabError error)
     {
-        print("registration error");
+        print("registration error: " + error);
         statusField.text = ("registration error");
     }
 
