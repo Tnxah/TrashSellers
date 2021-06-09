@@ -77,6 +77,12 @@ public class Forms : MonoBehaviour
         //db.SignIn(login, password);
         reglog.Login(login, password);
     }
+    public void ResetButton()
+    {
+        login = loginIn.GetComponent<TMP_InputField>().text;
+        reglog.ResetPassword(login);
+    }
+
 
 
     void FixedUpdate()

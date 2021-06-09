@@ -4,6 +4,7 @@ using UnityEngine;
 using PlayFab.ClientModels;
 using PlayFab;
 using TMPro;
+using System;
 
 public class RegLog : MonoBehaviour
 {
@@ -64,6 +65,29 @@ public class RegLog : MonoBehaviour
     {
         print("login failed");
         statusField.text = "login failed";
+    }
+
+    public void ResetPassword(string email)
+    {
+        var request = new SendAccountRecoveryEmailRequest
+        {
+            Email = email,
+            TitleId = "67F9D"
+        };
+
+        PlayFabClientAPI.SendAccountRecoveryEmail(request, OnResetSuccess, OnResetFailure);
+    }
+
+    private void OnResetFailure(PlayFabError error)
+    {
+        print(error);
+        statusField.text = "reset failure";
+    }
+
+    private void OnResetSuccess(SendAccountRecoveryEmailResult result)
+    {
+        print(result);
+        statusField.text = "succesful reset";
     }
 }
 
