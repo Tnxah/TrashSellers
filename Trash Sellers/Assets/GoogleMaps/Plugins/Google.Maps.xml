@@ -1451,8 +1451,8 @@
             </summary></member>
         <member name="F:Google.Maps.Event.DidCreateEventArgs`2.Style">
             <summary>
-            The immutable Feature.Style.IStyle that was applied during GameObject
-            creation.
+            The immutable <see cref="T:Google.Maps.Feature.Style.IStyle" /> that was applied during
+            <see cref="T:UnityEngine.GameObject" /> creation.
             </summary></member>
         <member name="F:Google.Maps.Event.DidCreateEventArgs`2.GameObject">
             <summary>
@@ -1462,61 +1462,60 @@
             <summary>
             The `%DidCreateEventArgs` class constructor.
             </summary>
-            <param name="mapFeature">The Feature.MapFeature associated with the
+            <param name="mapFeature">The <see cref="T:Google.Maps.Feature.MapFeature" /> associated with the
             newly created GameObject.</param>
-            <param name="style">The style applied during GameObject creation.</param>
-            <param name="gameObject">The newly created GameObject.</param></member>
+            <param name="style">The style applied during <see cref="T:UnityEngine.GameObject" />
+            creation.</param>
+            <param name="gameObject">The newly created <see cref="T:UnityEngine.GameObject" />.</param></member>
         <member name="T:Google.Maps.Event.DidCreateExtrudedStructureArgs">
             <summary>
-            %Event arguments for <see cref="T:Google.Maps.Feature.ExtrudedStructure" /> DidCreate events.
-            </summary>
-            <remarks>See <see cref="F:Google.Maps.Event.ExtrudedStructureEvents.DidCreate" /></remarks></member>
+            %Event arguments for <see cref="T:Google.Maps.Feature.ExtrudedStructure" />
+            <see cref="F:Google.Maps.Event.ExtrudedStructureEvents.DidCreate" /> events.
+            </summary></member>
         <member name="M:Google.Maps.Event.DidCreateExtrudedStructureArgs.#ctor(Google.Maps.Feature.ExtrudedStructure,Google.Maps.Feature.Style.ExtrudedStructureStyle,UnityEngine.GameObject)">
             <summary>
             The `%DidCreateExtrudedStructureArgs` class constructor.
             </summary></member>
         <member name="T:Google.Maps.Event.DidCreateModeledStructureArgs">
             <summary>
-            %Event arguments for <see cref="T:Google.Maps.Feature.ModeledStructure" /> DidCreate
-            events.
-            </summary>
-            <remarks>See <see cref="F:Google.Maps.Event.ModeledStructureEvents.DidCreate" /></remarks></member>
+            %Event arguments for <see cref="T:Google.Maps.Feature.ModeledStructure" />
+            <see cref="F:Google.Maps.Event.ModeledStructureEvents.DidCreate" /> events.
+            </summary></member>
         <member name="M:Google.Maps.Event.DidCreateModeledStructureArgs.#ctor(Google.Maps.Feature.ModeledStructure,Google.Maps.Feature.Style.ModeledStructureStyle,UnityEngine.GameObject)">
             <inheritdoc /></member>
         <member name="T:Google.Maps.Event.DidCreateRegionArgs">
             <summary>
-            %Event arguments for <see cref="T:Google.Maps.Feature.Region" /> DidCreate events.
-            </summary>
-            <remarks>See <see cref="F:Google.Maps.Event.RegionEvents.DidCreate" /></remarks></member>
+            %Event arguments for <see cref="T:Google.Maps.Feature.Region" />
+            <see cref="F:Google.Maps.Event.RegionEvents.DidCreate" /> events.
+            </summary></member>
         <member name="M:Google.Maps.Event.DidCreateRegionArgs.#ctor(Google.Maps.Feature.Region,Google.Maps.Feature.Style.RegionStyle,UnityEngine.GameObject)">
             <inheritdoc /></member>
         <member name="T:Google.Maps.Event.DidCreateAreaWaterArgs">
             <summary>
-            %Event arguments for <see cref="T:Google.Maps.Feature.AreaWater" /> DidCreate events.
-            </summary>
-            <remarks>See <see cref="F:Google.Maps.Event.AreaWaterEvents.DidCreate" /></remarks></member>
+            %Event arguments for <see cref="T:Google.Maps.Feature.AreaWater" />
+            <see cref="F:Google.Maps.Event.AreaWaterEvents.DidCreate" /> events.
+            </summary></member>
         <member name="M:Google.Maps.Event.DidCreateAreaWaterArgs.#ctor(Google.Maps.Feature.AreaWater,Google.Maps.Feature.Style.AreaWaterStyle,UnityEngine.GameObject)">
             <inheritdoc /></member>
         <member name="T:Google.Maps.Event.DidCreateSegmentArgs">
             <summary>
-            %Event arguments for <see cref="T:Google.Maps.Feature.Segment" /> DidCreate events.
-            </summary>
-            <remarks>See <see cref="F:Google.Maps.Event.SegmentEvents.DidCreate" /></remarks></member>
+            %Event arguments for <see cref="T:Google.Maps.Feature.Segment" />
+            <see cref="F:Google.Maps.Event.SegmentEvents.DidCreate" /> events.
+            </summary></member>
         <member name="M:Google.Maps.Event.DidCreateSegmentArgs.#ctor(Google.Maps.Feature.Segment,Google.Maps.Feature.Style.SegmentStyle,UnityEngine.GameObject)">
             <inheritdoc /></member>
         <member name="T:Google.Maps.Event.DidCreateLineWaterArgs">
             <summary>
-            %Event arguments for <see cref="T:Google.Maps.Feature.LineWater" /> DidCreate events.
-            </summary>
-            <remarks>See <see cref="F:Google.Maps.Event.LineWaterEvents.DidCreate" /></remarks></member>
+            %Event arguments for <see cref="T:Google.Maps.Feature.LineWater" />
+            <see cref="F:Google.Maps.Event.LineWaterEvents.DidCreate" /> events.
+            </summary></member>
         <member name="M:Google.Maps.Event.DidCreateLineWaterArgs.#ctor(Google.Maps.Feature.LineWater,Google.Maps.Feature.Style.LineWaterStyle,UnityEngine.GameObject)">
             <inheritdoc /></member>
         <member name="T:Google.Maps.Event.DidCreateIntersectionArgs">
             <summary>
             Encapsulates event arguments for <see cref="T:Google.Maps.Feature.Segment" />
-            WillCreate events.
-            </summary>
-            <remarks>See <see cref="F:Google.Maps.Event.SegmentEvents.WillCreate" /></remarks></member>
+            <see cref="F:Google.Maps.Event.SegmentEvents.WillCreate" /> events.
+            </summary></member>
         <member name="M:Google.Maps.Event.DidCreateIntersectionArgs.#ctor(Google.Maps.Unity.Intersections.IntersectionFeature,Google.Maps.Feature.Style.SegmentStyle,UnityEngine.GameObject)">
             <inheritdoc /></member>
         <member name="T:Google.Maps.Event.Events">
@@ -1525,7 +1524,7 @@
             </summary>
             <remarks>
             %Events are part of a mechanism that allows you to style map feature
-            GameObjects. They are fired from various stages of the map feature
+            <see cref="T:UnityEngine.GameObject" />s. They are fired from various stages of the map feature
             construction pipeline. The SDK fires `WillCreate` and `DidCreate`
             events whenever it constructs a <see cref="T:Google.Maps.Feature.MapFeature" /> and its
             corresponding <see cref="T:UnityEngine.GameObject" /> during map loading. These events
@@ -1609,7 +1608,7 @@
             </summary></member>
         <member name="F:Google.Maps.Event.Events._MapFeatureEvents">
             <summary>
-            Backing field for %MapFeatureEvents.
+            Backing field for <see cref="T:Google.Maps.Event.MapFeatureEvents" />.
             </summary></member>
         <member name="P:Google.Maps.Event.Events.MapFeatureEvents">
             <summary>
@@ -1617,7 +1616,7 @@
             </summary></member>
         <member name="F:Google.Maps.Event.Events._TerrainEvents">
             <summary>
-            Backing field for %TerrainEvents.
+            Backing field for <see cref="T:Google.Maps.Event.TerrainEvents" />.
             </summary></member>
         <member name="P:Google.Maps.Event.Events.TerrainEvents">
             <summary>
@@ -1625,7 +1624,7 @@
             </summary></member>
         <member name="F:Google.Maps.Event.Events._FloatingOriginEvents">
             <summary>
-            Backing field for %FloatingOriginEvents.
+            Backing field for <see cref="T:Google.Maps.Event.FloatingOriginEvents" />.
             </summary></member>
         <member name="P:Google.Maps.Event.Events.FloatingOriginEvents">
             <summary>
@@ -1641,20 +1640,21 @@
             </summary></member>
         <member name="T:Google.Maps.Event.ExtrudedStructureEvents">
             <summary>
-            Encapsulates Feature.ExtrudedStructure construction pipeline events.
+            Encapsulates <see cref="T:Google.Maps.Feature.ExtrudedStructure" /> construction pipeline events.
             </summary></member>
         <member name="F:Google.Maps.Event.ExtrudedStructureEvents.WillCreate">
             <summary>
-            Fired when the SDK is about to create an extruded structure GameObject.
+            Fired when the SDK is about to create an extruded structure
+            <see cref="T:UnityEngine.GameObject" />.
             </summary>
             <remarks>
-            <strong>Note:</strong> To prevent Feature.ExtrudedStructure
-            GameObject creation, set `WillCreateEventArgs&lt; TM, TS &gt;.Cancel` to
-            *true*.
+            <strong>Note:</strong> To prevent <see cref="T:Google.Maps.Feature.ExtrudedStructure" />
+            <see cref="T:UnityEngine.GameObject" /> creation, set `WillCreateEventArgs&lt; TM,
+            TS &gt;.Cancel` to *true*.
             </remarks></member>
         <member name="F:Google.Maps.Event.ExtrudedStructureEvents.DidCreate">
             <summary>
-            Fired after creating an extruded structure GameObject.
+            Fired after creating an extruded structure <see cref="T:UnityEngine.GameObject" />.
             </summary></member>
         <member name="T:Google.Maps.Event.FloatingOriginMoveEvent">
             <inheritdoc cref="FloatingOriginMoveEvent" /></member>
@@ -1698,12 +1698,12 @@
         <member name="F:Google.Maps.Event.IntersectionEvents.WillCreate">
             <summary>
             Fired when the SDK is about to begin constructing an <see cref="T:Google.Maps.Unity.Intersections.Intersection" />
-            GameObject.
+            <see cref="T:UnityEngine.GameObject" />.
             </summary></member>
         <member name="F:Google.Maps.Event.IntersectionEvents.DidCreate">
             <summary>
-            Fired when the SDK finishes constructing an <see cref="T:Google.Maps.Unity.Intersections.Intersection" /> GameObject,
-            and adding it to the %Unity scene.
+            Fired when the SDK finishes constructing an <see cref="T:Google.Maps.Unity.Intersections.Intersection" />
+            <see cref="T:UnityEngine.GameObject" />, and adding it to the %Unity scene.
             </summary></member>
         <member name="T:Google.Maps.Event.ListenerCountingUnityEvent`1">
             <summary>
@@ -1980,15 +1980,18 @@
             </summary></member>
         <member name="F:Google.Maps.Event.LineWaterEvents.WillCreate">
             <summary>
-            Fired when the SDK is about to create a GameObject from a LineWater MapFeature.
+            Fired when the SDK is about to create a <see cref="T:UnityEngine.GameObject" /> from a
+            <see cref="T:Google.Maps.Feature.LineWater" /> MapFeature.
             </summary>
             <remarks>
-            <strong>Note:</strong> To prevent Feature.LineWater GameObject creation,
-            set `WillCreateEventArgs&lt; TM, TS &gt;.Cancel` to *true*.
+            <strong>Note:</strong> To prevent <see cref="T:Google.Maps.Feature.LineWater" />
+            <see cref="T:UnityEngine.GameObject" /> creation, set `WillCreateEventArgs&lt; TM,
+            TS &gt;.Cancel` to *true*.
             </remarks></member>
         <member name="F:Google.Maps.Event.LineWaterEvents.DidCreate">
             <summary>
-            Fired immediately after creating a Feature.LineWater GameObject.
+            Fired immediately after creating a <see cref="T:Google.Maps.Feature.LineWater" />
+            <see cref="T:UnityEngine.GameObject" />.
             </summary></member>
         <member name="T:Google.Maps.Event.MapLoadStartEvent">
             <summary>
@@ -2179,7 +2182,7 @@
             If this value is zero, then all <see cref="T:UnityEngine.GameObject" />s from calls to
             <see cref="M:Google.Maps.MapsService.LoadMap(UnityEngine.Bounds,Google.Maps.GameObjectOptions)" /> before this event are ready. If this
             value is non-zero, then there might be parts of the map that didn't load
-            successfully. To retry, call `LoadMap` again.
+            successfully. To retry, call <see cref="M:Google.Maps.MapsService.LoadMap(UnityEngine.Bounds,Google.Maps.GameObjectOptions)" /> again.
             </remarks></member>
         <member name="M:Google.Maps.Event.MapLoadedArgs.#ctor(System.Int32)">
             <summary>
@@ -2331,7 +2334,8 @@
             </summary></member>
         <member name="F:Google.Maps.Event.ModeledStructureEvents.WillCreate">
             <summary>
-            Fired when the SDK is about to create a modeled structure GameObject.
+            Fired when the SDK is about to create a modeled structure
+            <see cref="T:UnityEngine.GameObject" />.
             </summary>
             <remarks>
             To prevent object creation, set `WillCreateModeledStructureArgs.Cancel`
@@ -2339,7 +2343,7 @@
             </remarks></member>
         <member name="F:Google.Maps.Event.ModeledStructureEvents.DidCreate">
             <summary>
-            Fired immediately after creating a modeled structure GameObject.
+            Fired immediately after creating a modeled structure <see cref="T:UnityEngine.GameObject" />.
             </summary></member>
         <member name="T:Google.Maps.Event.WillCreateRegionEvent">
             <summary>
@@ -2356,7 +2360,7 @@
             </summary></member>
         <member name="F:Google.Maps.Event.RegionEvents.WillCreate">
             <summary>
-            Fired when the SDK is about to create a region GameObject.
+            Fired when the SDK is about to create a region <see cref="T:UnityEngine.GameObject" />.
             </summary>
             <remarks>
             To prevent object creation, set `WillCreateRegionArgs.Cancel`
@@ -2364,7 +2368,7 @@
             </remarks></member>
         <member name="F:Google.Maps.Event.RegionEvents.DidCreate">
             <summary>
-            Fired immediately after creating a region GameObject.
+            Fired immediately after creating a region <see cref="T:UnityEngine.GameObject" />.
             </summary></member>
         <member name="T:Google.Maps.Event.WillCreateSegmentEvent">
             <summary>
@@ -2381,7 +2385,7 @@
             </summary></member>
         <member name="F:Google.Maps.Event.SegmentEvents.WillCreate">
             <summary>
-            Fired when the SDK is about to create a segment GameObject.
+            Fired when the SDK is about to create a segment <see cref="T:UnityEngine.GameObject" />.
             </summary>
             <remarks>
             To prevent object creation, set `WillCreateSegmentArgs.Cancel`
@@ -2389,7 +2393,7 @@
             </remarks></member>
         <member name="F:Google.Maps.Event.SegmentEvents.DidCreate">
             <summary>
-            Fired immediately after creating a segment GameObject.
+            Fired immediately after creating a segment <see cref="T:UnityEngine.GameObject" />.
             </summary></member>
         <member name="T:Google.Maps.Event.WillCreateAreaWaterEvent">
             <summary>
@@ -2405,17 +2409,18 @@
             </summary></member>
         <member name="F:Google.Maps.Event.AreaWaterEvents.WillCreate">
             <summary>
-            Fired when the SDK is about to begin constructing a Feature.AreaWater
-            GameObject.
+            Fired when the SDK is about to begin constructing a <see cref="T:Google.Maps.Feature.AreaWater" />
+            <see cref="T:UnityEngine.GameObject" />.
             </summary>
             <remarks>
-            <strong>Note:</strong> To prevent AreaWater GameObject creation, set
-            `WillCreateAreaWaterArgs.Cancel` to <em>true</em>.
+            <strong>Note:</strong> To prevent <see cref="T:Google.Maps.Feature.AreaWater" />
+            <see cref="T:UnityEngine.GameObject" /> creation, set `WillCreateAreaWaterArgs.Cancel`
+            to <em>true</em>.
             </remarks></member>
         <member name="F:Google.Maps.Event.AreaWaterEvents.DidCreate">
             <summary>
-            Fired when the SDK finishes constructing a Feature.AreaWater GameObject,
-            and adding it to the %Unity scene.
+            Fired when the SDK finishes constructing a <see cref="T:Google.Maps.Feature.AreaWater" />
+            <see cref="T:UnityEngine.GameObject" />, and adding it to the %Unity scene.
             </summary></member>
         <member name="T:Google.Maps.Event.WillCreateEventArgs`2">
             <summary>
@@ -2424,15 +2429,15 @@
         <member name="F:Google.Maps.Event.WillCreateEventArgs`2.MapFeature">
             <summary>
             An immutable <see cref="T:Google.Maps.Feature.MapFeature" /> that corresponds to the
-            GameObject being created.
+            <see cref="T:UnityEngine.GameObject" /> being created.
             </summary>
             <remarks>
             Contains all known type, geometry, and metadata information.
             </remarks></member>
         <member name="F:Google.Maps.Event.WillCreateEventArgs`2.Style">
             <summary>
-            An immutable `Style` that will be applied during GameObject
-            creation.
+            An immutable <see cref="N:Google.Maps.Feature.Style" /> that will be applied during
+            <see cref="T:UnityEngine.GameObject" /> creation.
             </summary>
             <remarks>
             To change styles, create a new <see cref="T:Google.Maps.Feature.Style.IStyle" />
@@ -2446,8 +2451,8 @@
         <member name="F:Google.Maps.Event.WillCreateEventArgs`2.StaticBatchingPolicy">
             <summary>
             Determines whether to generate the resulting <see cref="T:UnityEngine.GameObject" /> as static.
-            Static GameObjects that share the same material can be batched together
-            to save draw calls, but they cannot be transformed. For more
+            Static <see cref="T:UnityEngine.GameObject" />s that share the same material can be batched
+            together to save draw calls, but they cannot be transformed. For more
             information, see
             [Draw call batching](https://docs.unity3d.com/Manual/DrawCallBatching.html).
             </summary></member>
@@ -2456,9 +2461,9 @@
             The `%WillCreateEventArgs` class constructor.
             </summary>
             <param name="mapFeature">The `MapFeature` associated with this
-            GameObject.</param>
+            <see cref="T:UnityEngine.GameObject" />.</param>
             <param name="style">The `Style` that is about to be applied to the
-            GameObject.</param></member>
+            <see cref="T:UnityEngine.GameObject" />.</param></member>
         <member name="T:Google.Maps.Event.WillCreateExtrudedStructureArgs">
             <summary>
             Encapsulates event arguments for <see cref="T:Google.Maps.Feature.ExtrudedStructure" />
@@ -2588,6 +2593,14 @@
             Constructor.
             </summary>
             <param name="innerException">The exception that was not handled.</param></member>
+        <member name="T:Google.Maps.FakeDiagnosableService">
+            <summary>
+            A class that can have diagnostics enabled or disabled.
+            </summary></member>
+        <member name="P:Google.Maps.FakeDiagnosableService.DiagnosticsEnabled">
+            <summary>
+            Whether diagnostics are enabled.
+            </summary></member>
         <member name="T:Google.Maps.Feature.AreaWater">
             <summary>
             A <see cref="T:Google.Maps.Feature.MapFeature" /> that represents a 2D body of water.
@@ -4941,6 +4954,14 @@
             <param name="coroutineStarter">
             The <see cref="T:Google.Maps.Util.ICoroutineStarter" /> that triggered this event.
             </param></member>
+        <member name="T:Google.Maps.IDiagnosableService">
+            <summary>
+            A class that can have diagnostics enabled or disabled.
+            </summary></member>
+        <member name="P:Google.Maps.IDiagnosableService.DiagnosticsEnabled">
+            <summary>
+            Whether diagnostics are enabled.
+            </summary></member>
         <member name="T:Google.Maps.IGameObjectOptionsProvider">
             <summary>
             Provides a <see cref="T:Google.Maps.GameObjectOptions" /> instance on request.
@@ -5536,6 +5557,10 @@
             <summary>
             A fake LogsService for use in testing.
             </summary></member>
+        <member name="M:Google.Maps.Logging.FakeLogsService.DiagnosableServiceDidStart(Google.Maps.IDiagnosableService)">
+            <inheritdoc /></member>
+        <member name="M:Google.Maps.Logging.FakeLogsService.DiagnosableServiceDidShutdown(Google.Maps.IDiagnosableService)">
+            <inheritdoc /></member>
         <member name="M:Google.Maps.Logging.FakeLogsService.MaybeStartSendingLogs(Google.Maps.Util.ICoroutineStarter)">
             <inheritdoc /></member>
         <member name="M:Google.Maps.Logging.FakeLogsService.Stop">
@@ -5608,6 +5633,16 @@
         <member name="T:Google.Maps.Logging.ILogsService">
             <summary>
             Interface for LogsServices.
+            </summary></member>
+        <member name="M:Google.Maps.Logging.ILogsService.DiagnosableServiceDidStart(Google.Maps.IDiagnosableService)">
+            <summary>
+            Adds the provided <see cref="T:Google.Maps.MapsService" /> to the list of active MapsServices to
+            log for.
+            </summary></member>
+        <member name="M:Google.Maps.Logging.ILogsService.DiagnosableServiceDidShutdown(Google.Maps.IDiagnosableService)">
+            <summary>
+            Removes the provided <see cref="T:Google.Maps.MapsService" /> from the list of active MapsServices to
+            log for.
             </summary></member>
         <member name="M:Google.Maps.Logging.ILogsService.MaybeStartSendingLogs(Google.Maps.Util.ICoroutineStarter)">
             <summary>
@@ -5833,6 +5868,14 @@
             <summary>
             Sender to be used for sending the log requests.
             </summary></member>
+        <member name="F:Google.Maps.Logging.LogsService.ActiveDiagnosableServices">
+            <summary>
+            All currently active <see cref="T:Google.Maps.IDiagnosableService" />s.
+            </summary>
+            <remarks> Logging should only occur if there is at least one diagnosable service with
+            diagnostics enabled, and no diagnosable services with diagnostics disabled.
+            See go/musk-privacy-compliant-logging-toggle for more details.
+            </remarks></member>
         <member name="M:Google.Maps.Logging.LogsService.GetInstance">
             <summary>
             Gets the singleton instance of the LogsService.
@@ -5853,6 +5896,15 @@
             </summary></member>
         <member name="M:Google.Maps.Logging.LogsService.#ctor(Google.Maps.Logging.ILogRequestSender,Google.Maps.Util.IClock)">
             <summary>Constructor.</summary></member>
+        <member name="M:Google.Maps.Logging.LogsService.DiagnosableServiceDidStart(Google.Maps.IDiagnosableService)">
+            <inheritdoc /></member>
+        <member name="M:Google.Maps.Logging.LogsService.DiagnosableServiceDidShutdown(Google.Maps.IDiagnosableService)">
+            <inheritdoc /></member>
+        <member name="M:Google.Maps.Logging.LogsService.CanLog">
+            <summary>
+            Returns true iff there is at least one active MapsService with EnableDiagnostics == true and
+            no MapServices with EnableDiagnostics == false.
+            </summary></member>
         <member name="M:Google.Maps.Logging.LogsService.GetSavedNextLogTime">
             <summary>
             Returns the saved time to send the next log request.
@@ -6919,6 +6971,8 @@
             <strong>Caution:</strong> You must set this value before the %Unity
             runtime calls <see cref="M:Google.Maps.MapsService.Awake" />.
             </remarks></member>
+        <member name="P:Google.Maps.MapsService.Google#Maps#IDiagnosableService#DiagnosticsEnabled">
+            <inheritdoc /></member>
         <member name="F:Google.Maps.MapsService._Events">
             <summary>A backing field for <see cref="T:Google.Maps.Event.Events" />.</summary>
             <remarks>
@@ -8297,6 +8351,11 @@
             Initializes <see cref="F:Google.Maps.TileLoading.NetworkParameters._AndroidCertificateFingerprint" /> if running on Android. On other
             platforms, does nothing.
             </summary></member>
+        <member name="M:Google.Maps.TileLoading.NetworkParameters.GetByteArray(UnityEngine.AndroidJavaObject)">
+            <summary>
+            Converts a <see cref="T:UnityEngine.AndroidJavaObject" /> to a byte array.
+            </summary>
+            <param name="androidJavaObject">The object to convert.</param></member>
         <member name="T:Google.Maps.TileLoading.NetworkSlotPool">
             <summary>
             Pool of slots for network connections. Used to limit the number of concurrent network
@@ -16507,6 +16566,16 @@
         <member name="M:Google.Maps.Util.MathsUtils.NonNegativeMod(System.Int32,System.Int32)">
             <summary>
             Returns the non-negative remainder of x / m.
+            </summary></member>
+        <member name="M:Google.Maps.Util.MathsUtils.ClosestPowerOfTwo(System.Int32)">
+            <summary>
+            Equivilant to <see cref="M:UnityEngine.Mathf.ClosestPowerOfTwo(System.Int32)" /> but does not depend on a native
+            implementation (so it can be called from our unit tests not running inside Unity).
+            </summary></member>
+        <member name="M:Google.Maps.Util.MathsUtils.NextPowerOfTwo(System.Int32)">
+            <summary>
+            Equivilant to <see cref="M:UnityEngine.Mathf.NextPowerOfTwo(System.Int32)" /> but does not depend on a native
+            implementation (so it can be called from our unit tests not running inside Unity).
             </summary></member>
         <member name="F:Google.Maps.Util.MathsUtils.ToRadians">
             <summary>
