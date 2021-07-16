@@ -1,6 +1,7 @@
 ﻿using Google.Maps.Coord;
 using Google.Maps.Event;
 using Google.Maps.Examples.Shared;
+using System;
 using UnityEngine;
 
 namespace Google.Maps.Examples {
@@ -43,5 +44,10 @@ namespace Google.Maps.Examples {
       // The Map is loaded - you can start/resume gameplay from that point.
       // The new geometry is added under the GameObject that has MapsService as a component.
     }
-  }
+
+        internal void SetLatLan(Vector2 vector2)
+        {
+            LatLng = new LatLng(vector2.x, vector2.y);
+        }
+    }
 }
