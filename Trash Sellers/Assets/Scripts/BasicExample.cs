@@ -2,6 +2,7 @@
 using Google.Maps.Event;
 using Google.Maps.Examples.Shared;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Google.Maps.Examples {
@@ -13,41 +14,44 @@ namespace Google.Maps.Examples {
   /// inspector before pressing start, that location will be loaded instead.
   /// </remarks>
   [RequireComponent(typeof(MapsService))]
-  public class BasicExample : MonoBehaviour {
-    [Tooltip("LatLng to load (must be set before hitting play).")]
-    public LatLng LatLng = new LatLng(40.6892199, -74.044601);
+    public class BasicExample : MonoBehaviour
+    {
+        MapsService mapsService;
+        //LatLng LatLng = new LatLng(40.6892199, -74.044601);
+        LatLng LatLng = new LatLng(0, 0);
 
-    /// <summary>
-    /// Use <see cref="MapsService"/> to load geometry.
-    /// </summary>
-    private void Start() {
-      // Get required MapsService component on this GameObject.
-      MapsService mapsService = GetComponent<MapsService>();
+        bool load = false;
 
-      // Set real-world location to load.
-      mapsService.InitFloatingOrigin(LatLng);
 
-      // Register a listener to be notified when the map is loaded.
-      mapsService.Events.MapEvents.Loaded.AddListener(OnLoaded);
-
-      // Load map with default options.
-      mapsService.LoadMap(ExampleDefaults.DefaultBounds, ExampleDefaults.DefaultGameObjectOptions);
-    }
-
-    /// <summary>
-    /// Example of OnLoaded event listener.
-    /// </summary>
-    /// <remarks>
-    /// The communication between the game and the MapsSDK is done through APIs and event listeners.
-    /// </remarks>
-    public void OnLoaded(MapLoadedArgs args) {
-      // The Map is loaded - you can start/resume gameplay from that point.
-      // The new geometry is added under the GameObject that has MapsService as a component.
-    }
-
-        internal void SetLatLan(Vector2 vector2)
+        private void Start()
         {
-            LatLng = new LatLng(vector2.x, vector2.y);
+            mapsService = GetComponent<MapsService>();
+            StartCoroutine(LoadMap());
+        }
+
+        void Update()
+        {
+            //LatLng = new LatLng(GPS.Instance.latitude, GPS.Instance.longitude);
+        }
+
+        public void SetLatLan(Vector2 coords)
+        {
+            LatLng = new LatLng(coords.x, coords.y);
+            load = true;
+        }
+
+        public void OnLoaded(MapLoadedArgs args)
+        {
+
+
+        }
+        IEnumerator LoadMap()
+        {
+            yield return new WaitUntil(() => load);
+            print("Loading started");
+            mapsService.InitFloatingOrigin(LatLng);
+            mapsService.Events.MapEvents.Loaded.AddListener(OnLoaded);
+            mapsService.LoadMap(ExampleDefaults.DefaultBounds, ExampleDefaults.DefaultGameObjectOptions);
         }
     }
 }

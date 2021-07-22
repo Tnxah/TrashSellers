@@ -9,11 +9,13 @@ using UnityEngine.UI;
 
 public class GPS : MonoBehaviour
 {
+    //52.20925
+    //20.97479
     public TextMeshProUGUI coordinates;
     public static GPS Instance { set; get; }
 
-    public float latitude;
-    public float longitude;
+    public float latitude = 0f;
+    public float longitude = 0f;
 
     public bool ableToGetCoordinates = false;
 
@@ -32,7 +34,7 @@ public class GPS : MonoBehaviour
 
     void Start()
     {
-        map = (GameObject)Instantiate(Resources.Load("Prefabs/MapPart", typeof(GameObject)));
+        map = (GameObject)Instantiate(Resources.Load("Prefabs/MapPartOld", typeof(GameObject)));
         player = GameObject.FindGameObjectWithTag("Player");
 
         player.transform.gameObject.GetComponentInChildren<MapLoader>().MapsService = map.GetComponent<MapsService>();
@@ -49,7 +51,7 @@ public class GPS : MonoBehaviour
         }
         else { Debug.Log("GPS is enabled"); }
 
-        
+
         Input.location.Start(5, 5);
         yield return new WaitForSeconds(1);
         int maxWait = 20;
@@ -90,6 +92,6 @@ public class GPS : MonoBehaviour
 
             lastCheck = Time.time;
         }
-       
+
     }
 }

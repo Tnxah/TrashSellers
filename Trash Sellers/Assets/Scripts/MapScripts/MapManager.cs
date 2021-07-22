@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-    private static Dictionary<string, GameObject> _loadedParts;
+    public GameObject Player;
+
+    private static Dictionary<string, GameObject> _loadedParts = new Dictionary<string, GameObject>();
 
     private int X;
     private int Y;
@@ -20,7 +22,12 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
 
+        if (_loadedParts.Count == 0)
+        {
+            LoadPart(0, 0);
+        }
     }
 
     void Update()
@@ -29,7 +36,7 @@ public class MapManager : MonoBehaviour
     }
 
 
-    //check all closest cells around current map cell to load map parts
+    //checking all closest cells around current map cell to load map parts
     public void AroundCheck()
     {
         for (int y = Y--; y < Y++; y++)
@@ -49,7 +56,7 @@ public class MapManager : MonoBehaviour
     private void LoadPart(int x, int y)
     {
         GameObject MapPart = Instantiate(MapPartPrefab);
-        //MapPart.GetComponent< >().SetIndex(x, y); need to add component type
+        MapPart.GetComponent<MapPart>().SetIndex(x, y);
         _loadedParts.Add($"{x},{y}", MapPart);
 
     }

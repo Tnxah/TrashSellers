@@ -15,16 +15,15 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         StartCoroutine(Init());
-
     }
 
    
     void Update()
     {
-        //player.position = iniRef;
+        
         if (able)
         {
-            gameObject.GetComponent<CoordinateRecounter>().Recount();
+            transform.position = CoordinateRecounter.Recount(GPS.Instance.latitude, GPS.Instance.longitude);
         }    
     }
 
@@ -40,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
 
         iniRef.x = (float)((currPos.y * 20037508.34 / 180) / 100);
         iniRef.z = (float)(System.Math.Log(System.Math.Tan((90 + currPos.x) * System.Math.PI / 360)) / (System.Math.PI / 180));
-        print(iniRef.z);
         iniRef.z = (float)((iniRef.z * 20037508.34 / 180) / 100);
     }
 

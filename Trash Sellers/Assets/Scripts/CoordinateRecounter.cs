@@ -1,38 +1,47 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CoordinateRecounter : MonoBehaviour
 {
-    Vector3 position = Vector3.zero;
-    float lat, lon;
+    static Vector3 position = Vector3.zero;
+    static float lat, lon;
 
-    Vector3 iniRef;
-    Transform player;
+    static Vector3 iniRef;
+    static PlayerMovement pm;
 
     void Start()
     {
-        player = gameObject.transform;
-        iniRef = gameObject.GetComponent<PlayerMovement>().GetIniRef();
+        pm = gameObject.GetComponent<PlayerMovement>();
     }
-
-    void Update()
+    public static Vector3 Recount(float lat, float lan)
     {
-        lat = GPS.Instance.latitude;
-        lon = GPS.Instance.longitude;
-    }
+        iniRef = pm.GetIniRef();
 
-    public void Recount()
-    {
-        iniRef = gameObject.GetComponent<PlayerMovement>().GetIniRef();
-        position.x = (float)(((lon * 20037508.34 / 180) / 100) - iniRef.x);
-        position.z = (float)(Mathf.Log(Mathf.Tan((90 + lat) * Mathf.PI / 360)) / (Mathf.PI / 180));
-        position.z = (float)(((position.z * 20037508.34 / 180) / 100) - iniRef.z);
+        position.x = (float)(((lon * 20037508.34f / 180f) / 100f) - iniRef.x);
+        position.z = (float)(Mathf.Log(Mathf.Tan((90f + lat) * Mathf.PI / 360f)) / (Mathf.PI / 180f));
+        position.z = (float)(((position.z * 20037508.34f / 180f) / 100f) - iniRef.z);
 
         //sizing
         position.x *= 121f;
         position.z *= 121f;
 
-        player.position = position;
+        return new Vector3(position.x, 0, position.z);
     }
+
+    public static Vector2 RecountReverse(float x, float z)
+    {
+        x /= 121f;
+        z /= 121f;
+
+        iniRef = pm.GetIniRef();
+
+        lon = (float)(((x + iniRef.x) * 100f) * 180f / 20037508.34f);
+        z = (float)(((z + iniRef.z) * 100f) * 180f / 20037508.34f);
+        lat = (float)((360f / Mathf.PI) * Mathf.Atan(Mathf.Pow((float)Math.E, z * (Mathf.PI / 180f)))) - 90f;
+
+        return new Vector2(lat, lon);
+    }
+
 }
