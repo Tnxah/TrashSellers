@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
     private int X;
     private int Y;
 
-
+    public float MapSize;
 
     GameObject MapPartPrefab;
 
@@ -56,6 +56,7 @@ public class MapManager : MonoBehaviour
     private void LoadPart(int x, int y)
     {
         GameObject MapPart = Instantiate(MapPartPrefab);
+        MapPart.GetComponent<MapPart>().MapSize = MapSize;
         MapPart.GetComponent<MapPart>().SetIndex(x, y);
         _loadedParts.Add($"{x},{y}", MapPart);
 

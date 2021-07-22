@@ -94,4 +94,19 @@ public class GPS : MonoBehaviour
         }
 
     }
+
+    IEnumerator Init()
+    {
+        yield return new WaitUntil(() => ableToGetCoordinates);
+        //--able = true;
+        //currPos = new Vector2(latitude, longitude);
+
+        //diraction = (oldPos - currPos);
+
+        //oldPos = currPos;
+
+        //iniRef.x = (float)((currPos.y * 20037508.34 / 180) / 100);
+        //iniRef.z = (float)(System.Math.Log(System.Math.Tan((90 + currPos.x) * System.Math.PI / 360)) / (System.Math.PI / 180));
+        //iniRef.z = (float)((iniRef.z * 20037508.34 / 180) / 100);
+    }
 }

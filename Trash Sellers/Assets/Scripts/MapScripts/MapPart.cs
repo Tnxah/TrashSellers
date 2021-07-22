@@ -30,8 +30,8 @@ public class MapPart : MonoBehaviour
 
     public void SetIndex(int x, int y)
     {
-        float X = x * 500f;
-        float Y = y * 500f;
+        float X = x * MapSize;
+        float Y = y * MapSize;
 
 
         Vector2 coords = CoordinateRecounter.RecountReverse(X, Y);
