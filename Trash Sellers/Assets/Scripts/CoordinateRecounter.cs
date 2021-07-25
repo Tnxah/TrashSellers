@@ -9,15 +9,14 @@ public class CoordinateRecounter : MonoBehaviour
     static float lat, lon;
 
     static Vector3 iniRef;
-    static PlayerMovement pm;
 
     void Start()
     {
-        pm = gameObject.GetComponent<PlayerMovement>();
+        
     }
     public static Vector3 Recount(float lat, float lan)
     {
-        iniRef = pm.GetIniRef();
+        iniRef = GPS.Instance.iniRef;
 
         position.x = (float)(((lon * 20037508.34f / 180f) / 100f) - iniRef.x);
         position.z = (float)(Mathf.Log(Mathf.Tan((90f + lat) * Mathf.PI / 360f)) / (Mathf.PI / 180f));
@@ -35,12 +34,15 @@ public class CoordinateRecounter : MonoBehaviour
         x /= 121f;
         z /= 121f;
 
-        iniRef = pm.GetIniRef();
+        iniRef = GPS.Instance.iniRef;
 
         lon = (float)(((x + iniRef.x) * 100f) * 180f / 20037508.34f);
         z = (float)(((z + iniRef.z) * 100f) * 180f / 20037508.34f);
         lat = (float)((360f / Mathf.PI) * Mathf.Atan(Mathf.Pow((float)Math.E, z * (Mathf.PI / 180f)))) - 90f;
 
+        print(GPS.Instance.iniRef);
+        print(lon);
+        print(lat);
         return new Vector2(lat, lon);
     }
 

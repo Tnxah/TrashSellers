@@ -1,12 +1,12 @@
 ﻿using Google.Maps;
+using Google.Maps.Examples.Shared;
 using Google.Maps.Coord;
 using Google.Maps.Event;
-using Google.Maps.Examples.Shared;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MapsService))]
+//[RequireComponent(typeof(MapsService))]
 public class MapPart : MonoBehaviour
 {
     MapsService mapsService;
@@ -24,15 +24,23 @@ public class MapPart : MonoBehaviour
     }
     public void SetLatLan(Vector2 coords)
     {
+        //print(coords);
         LatLng = new LatLng(coords.x, coords.y);
         _load = true;
     }
 
     public void SetIndex(int x, int y)
     {
+        
         float X = x * MapSize;
         float Y = y * MapSize;
 
+        transform.position = new Vector3(X,0,Y);
+
+        if (!GPS.Instance.isInit)
+        {
+            print("Not init yet");
+        }
 
         Vector2 coords = CoordinateRecounter.RecountReverse(X, Y);
 
@@ -42,7 +50,7 @@ public class MapPart : MonoBehaviour
     IEnumerator MapLoading()
     {
         yield return new WaitUntil(() => _load);
-        print("Map part loading started");
+        print("Map part loading started in " + LatLng);
         mapsService.InitFloatingOrigin(LatLng);
         mapsService.Events.MapEvents.Loaded.AddListener(OnLoaded);
         mapsService.LoadMap(ExampleDefaults.DefaultBounds, ExampleDefaults.DefaultGameObjectOptions);

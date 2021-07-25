@@ -1,15 +1,14 @@
 ﻿
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-    public GameObject Player;
-
     private static Dictionary<string, GameObject> _loadedParts = new Dictionary<string, GameObject>();
 
-    private int X;
-    private int Y;
+    private int X = 0;
+    private int Y = 0;
 
     public float MapSize;
 
@@ -22,32 +21,33 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-
         if (_loadedParts.Count == 0)
         {
             LoadPart(0, 0);
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-
+        
+        if (_loadedParts.Count > 0)
+        {
+            AroundCheck();
+        }
     }
 
 
     //checking all closest cells around current map cell to load map parts
     public void AroundCheck()
     {
-        for (int y = Y--; y < Y++; y++)
+        for (int y = Y-1; y < Y+2; y++)
         {
-            for (int x = X--; x < X++; x++)
+            for (int x = X-1; x < X+2; x++)
             {
+                print($"{x},{y}");
                 if (!_loadedParts.ContainsKey($"{x},{y}")) //searching for non load map part by (x,y). around the currrent cell
                 {
-
                     LoadPart(x, y);
-
                 }
             }
         }
@@ -59,6 +59,5 @@ public class MapManager : MonoBehaviour
         MapPart.GetComponent<MapPart>().MapSize = MapSize;
         MapPart.GetComponent<MapPart>().SetIndex(x, y);
         _loadedParts.Add($"{x},{y}", MapPart);
-
     }
 }
