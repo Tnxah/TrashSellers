@@ -32,10 +32,10 @@ public class MapPart : MonoBehaviour
     public void SetIndex(int x, int y)
     {
         
-        float X = x * MapSize;
-        float Y = y * MapSize;
+        float X = x * MapSize*2; // почему то * 2
+        float Y = y * MapSize*2;
 
-        transform.position = new Vector3(X,0,Y);
+        transform.position = new Vector3(X/2,0,Y/2);
 
         if (!GPS.Instance.isInit)
         {

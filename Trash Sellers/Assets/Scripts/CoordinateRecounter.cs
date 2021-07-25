@@ -40,7 +40,6 @@ public class CoordinateRecounter : MonoBehaviour
         z = (float)(((z + iniRef.z) * 100f) * 180f / 20037508.34f);
         lat = (float)((360f / Mathf.PI) * Mathf.Atan(Mathf.Pow((float)Math.E, z * (Mathf.PI / 180f)))) - 90f;
 
-        print(GPS.Instance.iniRef);
         print(lon);
         print(lat);
         return new Vector2(lat, lon);

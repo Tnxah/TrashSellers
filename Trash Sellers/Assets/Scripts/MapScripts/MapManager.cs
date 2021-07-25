@@ -10,9 +10,9 @@ public class MapManager : MonoBehaviour
     private int X = 0;
     private int Y = 0;
 
-    public float MapSize;
+    private float MapSize = 694f;
 
-    GameObject MapPartPrefab;
+    public GameObject MapPartPrefab;
 
     void Awake()
     {
