@@ -14,7 +14,7 @@ public class CoordinateRecounter : MonoBehaviour
     {
         
     }
-    public static Vector3 Recount(float lat, float lan)
+    public static Vector3 Recount(float lat, float lon)
     {
         iniRef = GPS.Instance.iniRef;
 

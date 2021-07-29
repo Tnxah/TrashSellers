@@ -1,6 +1,6 @@
 ﻿
 using System.Collections.Generic;
-using System.Linq;
+using System.Collections;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
@@ -12,7 +12,7 @@ public class MapManager : MonoBehaviour
 
     private float MapSize = 694f;
 
-    public GameObject MapPartPrefab;
+    private GameObject MapPartPrefab;
 
     void Awake()
     {
@@ -24,6 +24,7 @@ public class MapManager : MonoBehaviour
         if (_loadedParts.Count == 0)
         {
             LoadPart(0, 0);
+            //StartCoroutine(LoadPartIE(0, 0));
         }
     }
 
@@ -44,10 +45,10 @@ public class MapManager : MonoBehaviour
         {
             for (int x = X-1; x < X+2; x++)
             {
-                print($"{x},{y}");
                 if (!_loadedParts.ContainsKey($"{x},{y}")) //searching for non load map part by (x,y). around the currrent cell
                 {
                     LoadPart(x, y);
+                    //StartCoroutine(LoadPartIE(x, y));
                 }
             }
         }
@@ -59,5 +60,25 @@ public class MapManager : MonoBehaviour
         MapPart.GetComponent<MapPart>().MapSize = MapSize;
         MapPart.GetComponent<MapPart>().SetIndex(x, y);
         _loadedParts.Add($"{x},{y}", MapPart);
+    }
+
+    IEnumerator LoadPartIE(int x, int y)
+    {
+        yield return new WaitUntil(() => GPS.Instance.isInit);
+
+        print("Start load part " + x + " " + y);
+
+        GameObject MapPart = Instantiate(MapPartPrefab);
+        MapPart.GetComponent<MapPart>().MapSize = MapSize;
+        MapPart.GetComponent<MapPart>().SetIndex(x, y);
+        _loadedParts.Add($"{x},{y}", MapPart);
+
+        print("End load part");
+    }
+    
+    public void SetIndex(Vector2 index)
+    {
+        X = (int)index.x;
+        Y = (int)index.y;
     }
 }
