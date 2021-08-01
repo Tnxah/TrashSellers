@@ -622,12 +622,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coordinates: {fileID: 205078504}
-  latitude: 0
-  longitude: 0
+  latitude: 52.23318
+  longitude: 21.01865
   checkDelay: 1
   ableToGetCoordinates: 0
   isInit: 0
-  HardCodeCoordinates: 0
+  HardCodeCoordinates: 1
   iniRef: {x: 0, y: 0, z: 0}
 --- !u!114 &1862419906
 MonoBehaviour:
