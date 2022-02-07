@@ -64,7 +64,7 @@ public class MapManager : MonoBehaviour
 
     IEnumerator LoadPartIE(int x, int y)
     {
-        yield return new WaitUntil(() => GPS.Instance.isInit);
+        yield return new WaitUntil(() => GPS.instance.isInit);
 
         print("Start load part " + x + " " + y);
 

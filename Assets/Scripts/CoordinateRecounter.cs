@@ -3,19 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoordinateRecounter : MonoBehaviour
+public class CoordinateRecounter
 {
     static Vector3 position = Vector3.zero;
-    static float lat, lon;
+    static double lat, lon;
 
     static Vector3 iniRef;
 
     public static Vector3 Recount(float lat, float lon)
     {
-        iniRef = GPS.Instance.iniRef;
+        iniRef = GPS.instance.iniRef;
 
-        position.x = (float)(((lon * 20037508.34f) / 18000f) - iniRef.x);
-        position.z = (float)(((Mathf.Log(Mathf.Tan((90f + lat) * Mathf.PI / 360f)) / (Mathf.PI / 180f)) * 1113.19490777778f) - iniRef.z);
+        position.x = (float)(((lon * 20037508.34) / 18000) - iniRef.x);
+        position.z = (float)(((Mathf.Log(Mathf.Tan((90 + lat) * Mathf.PI / 360)) / (Mathf.PI / 180)) * 1113.19490777778) - iniRef.z);
         
         //sizing
         position.x *= 60.5f;
@@ -29,14 +29,12 @@ public class CoordinateRecounter : MonoBehaviour
         x /= 60.5f;
         z /= 60.5f;
 
-        iniRef = GPS.Instance.iniRef;
+        iniRef = GPS.instance.iniRef;
 
-        lon = (float)(((x + iniRef.x) * 100f) * 180f / 20037508.34f);
-        lat = (Mathf.Atan(Mathf.Pow((float)Math.E, ((z + iniRef.z) * (Mathf.PI / 180f) / 1113.19490777778f))) / Mathf.PI * 360f) - 90f;
+        lon = (float)(((x + iniRef.x) * 100) * 180 / 20037508.34);
+        lat = (Mathf.Atan(Mathf.Pow((float)Math.E, (float)((z + iniRef.z) * (Mathf.PI / 180) / 1113.19490777778))) / Mathf.PI * 360) - 90;
 
-        //print(lon);
-        //print(lat);
-        return new Vector2(lat, lon);
+        return new Vector2(((float)lat), ((float)lon));
     }
 
 }

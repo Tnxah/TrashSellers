@@ -13,17 +13,17 @@ public class GPS : MonoBehaviour
     //20.97479
     public TextMeshProUGUI coordinates;
     [HideInInspector]
-    public static GPS Instance { set; get; }
+    public static GPS instance { set; get; }
 
     public float latitude = 0f;
     //= 52.20925f;
     public float longitude = 0f;
     //= 20.97479f;
-    public float checkDelay = 1f;
-    private float lastCheck;
+    private float updateDelay = 1f;
+    private float lastUpdate;
 
     [HideInInspector]
-    public bool ableToGetCoordinates = false;
+    public bool coordinatesReady = false;
     [HideInInspector]
     public bool isInit = false;
 
@@ -36,16 +36,17 @@ public class GPS : MonoBehaviour
     Vector2 oldPos = Vector2.zero;
     Vector2 currPos = Vector2.zero;
     Vector2 diraction = Vector2.zero;
-    [HideInInspector]
+    //[HideInInspector]
     public Vector3 iniRef = Vector3.zero;
 
 
     private void Awake()
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-       
-        
+        if (!instance)
+        {
+            instance = this;
+        }
+            DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -56,9 +57,11 @@ public class GPS : MonoBehaviour
 
     private IEnumerator StartLocationService()
     {
-        yield return new WaitForSeconds(2);
+        
         if (!HardCodeCoordinates)
         {
+            yield return new WaitUntil(() => Input.location.isEnabledByUser);
+
             if (!Input.location.isEnabledByUser)
             {
                 Debug.Log("GPS is disabled");
@@ -67,8 +70,8 @@ public class GPS : MonoBehaviour
             else { Debug.Log("GPS is enabled"); }
 
 
-            Input.location.Start(5, 5);
-            yield return new WaitForSeconds(1);
+            Input.location.Start(3, 3);
+            //yield return new WaitForSeconds(1);   tolko 4to zakomentil
             int maxWait = 20;
             while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
             {
@@ -86,11 +89,10 @@ public class GPS : MonoBehaviour
                 yield break;
             }
 
-            latitude = Input.location.lastData.latitude;
-            longitude = Input.location.lastData.longitude;
+            UpdateCoordinates();
         }
 
-        ableToGetCoordinates = true;
+        coordinatesReady = true;
 
         Init();
 
@@ -99,26 +101,47 @@ public class GPS : MonoBehaviour
 
     private void Update()
     {
-        if (!HardCodeCoordinates && ableToGetCoordinates && Time.time > (checkDelay + lastCheck))
+        if (!HardCodeCoordinates && coordinatesReady && Time.time > (updateDelay + lastUpdate))
         {
-            latitude = Input.location.lastData.latitude;
-            longitude = Input.location.lastData.longitude;
+            UpdateCoordinates();
 
             coordinates.text = "lat: " + latitude + "\n" + "lon: " + longitude;
 
-            lastCheck = Time.time;
+            lastUpdate = Time.time;
         }
 
     }
 
-    void Init()
-    {        
-        currPos = new Vector2(latitude, longitude);
-        print(latitude + " " + longitude +"Init latlan");
+    private void UpdateCoordinates()
+    {
+        latitude = Input.location.lastData.latitude;
+        longitude = Input.location.lastData.longitude;
+    }
 
-        iniRef.x = (float)((longitude * 20037508.34f / 180f) / 100f);
-        iniRef.z = (float)(System.Math.Log(System.Math.Tan((90f + latitude) * System.Math.PI / 360f)) / (System.Math.PI / 180f));
-        iniRef.z = (float)((iniRef.z * 20037508.34f / 180f) / 100f);
+    void Init()
+    {
+        currPos = new Vector2(latitude, longitude);
+        print(latitude + " " + longitude + "Init latlan");
+
+        iniRef.x = (float)((longitude * 20037508.34 / 180) / 100);
+        iniRef.z = (float)(Math.Log(Math.Tan((90 + latitude) * Math.PI / 360)) / (Math.PI / 180));
+        iniRef.z = (float)((iniRef.z * 20037508.34 / 180) / 100);
         isInit = true;
     }
+
+
+    public void Test()
+    {
+        print(latitude + " " + longitude);
+        var test1 = CoordinateRecounter.Recount(latitude,longitude);
+        print(test1);
+        var test = CoordinateRecounter.RecountReverse(test1.x, test1.z);
+        print(test.x+"|||"+ test.y);
+        test = CoordinateRecounter.RecountReverse(0,0);
+        print(test.x+"|||"+ test.y);
+        
+    }
 }
+
+
+

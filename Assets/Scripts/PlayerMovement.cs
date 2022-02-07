@@ -21,9 +21,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (GPS.Instance.isInit && GPS.Instance.ableToGetCoordinates)
+        if (GPS.instance.isInit && GPS.instance.coordinatesReady)
         {
-            transform.position = CoordinateRecounter.Recount(GPS.Instance.latitude, GPS.Instance.longitude);
+            transform.position = CoordinateRecounter.Recount(GPS.instance.latitude, GPS.instance.longitude);
         }
 
         MapManager.SetIndex(currentIndex);
