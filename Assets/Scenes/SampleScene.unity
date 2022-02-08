@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 1862419906}
   - component: {fileID: 1862419905}
   - component: {fileID: 1862419904}
+  - component: {fileID: 1862419908}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -624,8 +625,7 @@ MonoBehaviour:
   coordinates: {fileID: 205078504}
   latitude: 52.23318
   longitude: 21.01865
-  checkDelay: 1
-  ableToGetCoordinates: 0
+  coordinatesReady: 0
   isInit: 0
   HardCodeCoordinates: 1
   iniRef: {x: 0, y: 0, z: 0}
@@ -655,6 +655,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1862419908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862419903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba560175c8959842a76c46b6fb59ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1955968889
 GameObject:
   m_ObjectHideFlags: 0
