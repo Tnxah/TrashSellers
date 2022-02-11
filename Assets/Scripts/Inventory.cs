@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 
     public List<Object> inventory;
 
-    public delegate void OnInventoryChanged();
+    public delegate void OnInventoryChanged(string name);
     public OnInventoryChanged onInventoryChangedCallback;
 
     private void Awake()
@@ -47,8 +47,20 @@ public class Inventory : MonoBehaviour
         inventory.Add(obj);
         
         
-        onInventoryChangedCallback.Invoke();
+        onInventoryChangedCallback.Invoke(obj.name);
         //Destroy(obj.gameObject);
         obj.gameObject.SetActive(false);
+    }
+
+    public void Remove(string name)
+    {
+        if (inventory.Count <= 0)
+        {
+           // return;
+        }
+        print("Remove " + inventory.Find(x => x.name.Equals(name)));
+        inventory.Remove(inventory.Find(x => x.name.Equals(name)));
+
+        onInventoryChangedCallback.Invoke(name);
     }
 }

@@ -21,6 +21,8 @@ public class InventorySlot : MonoBehaviour
         this.objectName = obj.name;
         this.number = number;
 
+        gameObject.SetActive(true);
+
         UpdateSlot();
     }
 
@@ -28,6 +30,7 @@ public class InventorySlot : MonoBehaviour
     {
         number += num;
 
+        gameObject.SetActive(true);
         UpdateSlot();
     }
 
@@ -38,16 +41,23 @@ public class InventorySlot : MonoBehaviour
         {
             Delete();
         }
+        UpdateSlot();
     }
 
     public void Delete()
     {
-        //Delete/Clear slot
+        gameObject.SetActive(false);
     }
 
     private void UpdateSlot()
     {
         slotName.text = objectName;
         objectsNumber.text = number.ToString();
+    }
+
+
+    public void OnDecreaseButton()
+    {
+        Inventory.instance.Remove(objectName);
     }
 }

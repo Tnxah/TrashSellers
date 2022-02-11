@@ -8,7 +8,7 @@ public class ItemsManager : MonoBehaviour
     private Random rnd = new Random();
     public int spawnDelay = 30;
     public float spawnChance = 80;
-    public GameObject itemPrefab;
+    public List<GameObject> itemPrefabs;
     public float spawnRadius = 600;
 
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class ItemsManager : MonoBehaviour
             {
                     var position = UnityEngine.Random.insideUnitCircle * (spawnRadius);
                     Vector3 pos = PlayerScript.instance.transform.position + new Vector3(position.x, 0, position.y);
-                    Instantiate(itemPrefab, pos, Quaternion.identity);
+                    Instantiate(itemPrefabs[new Random().Next(itemPrefabs.Count)], pos, Quaternion.identity);
             
             }
 
