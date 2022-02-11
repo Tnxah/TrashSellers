@@ -41,13 +41,13 @@ public class MapPart : MonoBehaviour
 
         float X = x * MapSize;
         float Y = y * MapSize;
-        print(X + "ETO X");
+        
         //transform.position = new Vector3(X, 0, Y);
 
         Vector2 coords = CoordinateRecounter.RecountReverse(X, Y);
 
         transform.position = CoordinateRecounter.Recount(coords.x, coords.y);
-        print(coords.x + "ETO COORDY");
+
         SetLatLan(coords);
     }
 

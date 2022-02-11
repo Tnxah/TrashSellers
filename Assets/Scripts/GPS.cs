@@ -71,7 +71,7 @@ public class GPS : MonoBehaviour
 
 
             Input.location.Start(3, 3);
-            //yield return new WaitForSeconds(1);   tolko 4to zakomentil
+            yield return new WaitForSeconds(1);
             int maxWait = 20;
             while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
             {
@@ -89,6 +89,7 @@ public class GPS : MonoBehaviour
                 yield break;
             }
 
+            print("here");
             UpdateCoordinates();
         }
 
@@ -103,6 +104,7 @@ public class GPS : MonoBehaviour
     {
         if (!HardCodeCoordinates && coordinatesReady && Time.time > (updateDelay + lastUpdate))
         {
+            print("here 2");
             UpdateCoordinates();
 
             coordinates.text = "lat: " + latitude + "\n" + "lon: " + longitude;

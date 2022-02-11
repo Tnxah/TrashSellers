@@ -6,8 +6,8 @@ using Random = System.Random;
 public class ItemsManager : MonoBehaviour
 {
     private Random rnd = new Random();
-    private int waitTime = 30;
-    private float spawnChance = 80;
+    public int spawnDelay = 30;
+    public float spawnChance = 80;
     public GameObject itemPrefab;
     public float spawnRadius = 600;
 
@@ -26,19 +26,19 @@ public class ItemsManager : MonoBehaviour
     IEnumerator SlowUpdate()
     {
         while (true) { 
-        var rand = rnd.Next(0, 100);
-        print(rand);
-        if (rand < spawnChance)
-        {
-                var position = UnityEngine.Random.insideUnitCircle * (spawnRadius);
-                Vector3 pos = new Vector3(position.x, 0, position.y);
-                Instantiate(itemPrefab, pos, Quaternion.identity);
+            var rand = rnd.Next(0, 100);
+            print(rand);
+            if (rand < spawnChance)
+            {
+                    var position = UnityEngine.Random.insideUnitCircle * (spawnRadius);
+                    Vector3 pos = PlayerScript.instance.transform.position + new Vector3(position.x, 0, position.y);
+                    Instantiate(itemPrefab, pos, Quaternion.identity);
             
+            }
+
+
+            yield return new WaitForSeconds(spawnDelay);
         }
-
-
-        yield return new WaitForSeconds(waitTime);
-    }
 
     }
 }
