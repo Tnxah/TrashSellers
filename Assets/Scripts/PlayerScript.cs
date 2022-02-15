@@ -6,11 +6,16 @@ public class PlayerScript : MonoBehaviour
 {
     public static PlayerScript instance;
 
-    private void Start()
+    public Inventory inventory;
+
+    public int money = 0;
+
+    private void Awake()
     {
         if (!instance)
         {
             instance = this;
         }
+
     }
 }

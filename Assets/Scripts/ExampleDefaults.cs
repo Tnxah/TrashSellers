@@ -127,7 +127,7 @@ namespace Google.Maps.Examples.Shared {
       // Create style for segments (such as roads).
       SegmentStyle segmentStyle =
           new SegmentStyle.Builder { Material = segmentMaterial,
-                  IntersectionMaterial = intersectionMaterial, Width = 7.0f }.Build();
+                  IntersectionMaterial = intersectionMaterial, Width = 5.0f }.Build();
 
       // Collect styles into a form that can be given to map loading function.
       DefaultGameObjectOptions = new GameObjectOptions {

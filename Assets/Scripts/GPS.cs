@@ -11,9 +11,9 @@ public class GPS : MonoBehaviour
 {
     //52.20925
     //20.97479
-    public TextMeshProUGUI coordinates;
+    public TextMeshProUGUI coordinatesText;
     [HideInInspector]
-    public static GPS instance { set; get; }
+    public static GPS instance;
 
     public float latitude = 0f;
     //= 52.20925f;
@@ -29,14 +29,14 @@ public class GPS : MonoBehaviour
 
     public bool HardCodeCoordinates;
 
-
-    //GameObject map;
-    //GameObject player;
-
+    //---for direction------
     Vector2 oldPos = Vector2.zero;
     Vector2 currPos = Vector2.zero;
     Vector2 diraction = Vector2.zero;
-    //[HideInInspector]
+    //---------------
+
+
+    [HideInInspector]
     public Vector3 iniRef = Vector3.zero;
 
 
@@ -51,8 +51,7 @@ public class GPS : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(StartLocationService());
-        
+        StartCoroutine(StartLocationService()); 
     }
 
     private IEnumerator StartLocationService()
@@ -107,7 +106,7 @@ public class GPS : MonoBehaviour
             print("here 2");
             UpdateCoordinates();
 
-            coordinates.text = "lat: " + latitude + "\n" + "lon: " + longitude;
+            coordinatesText.text = "lat: " + latitude + "\n" + "lon: " + longitude;
 
             lastUpdate = Time.time;
         }

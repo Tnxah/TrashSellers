@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class ShopUI : MonoBehaviour
 {
-    IShopCustomer shopCustomer;
+    private IShopCustomer shopCustomer;
 
-    private void TryBuyObject(string name)
+    private void Start()
     {
-        if (shopCustomer.TryToPay(Shop.instance.GetObject(name).cost))
+        shopCustomer = PlayerScript.instance.gameObject.GetComponent<IShopCustomer>();
+    }
+    public void TryBuyObject(string name)
+    {
+        if (shopCustomer.TryToPay(ItemManager.instance.GetObject(name).cost))
         {
             shopCustomer.Buy(name);
         }

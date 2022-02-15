@@ -8,7 +8,7 @@ public class InventorySlot : MonoBehaviour
 {
     private Image icon;
     private string objectName;
-    private int number;
+    public int number;
 
     //UIside
 

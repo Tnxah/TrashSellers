@@ -4004,6 +4004,7 @@ GameObject:
   - component: {fileID: 1862419908}
   - component: {fileID: 1862419909}
   - component: {fileID: 1862419910}
+  - component: {fileID: 1862419912}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -4035,7 +4036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408ef6d4b3be42d4e9a7e497ff5f5318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coordinates: {fileID: 205078504}
+  coordinatesText: {fileID: 0}
   latitude: 52.23318
   longitude: 21.01865
   coordinatesReady: 0
@@ -4082,9 +4083,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDelay: 10
   spawnChance: 80
-  itemPrefabs:
-  - {fileID: 836188539834393273, guid: 39954201218bb1f41920e6298b415a7c, type: 3}
-  - {fileID: 836188539834393273, guid: 5f90bb87a90a211448444e4057187bdd, type: 3}
   spawnRadius: 500
 --- !u!114 &1862419909
 MonoBehaviour:
@@ -4125,6 +4123,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a0ce9685bb04c46bcb05c07cd8d4b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1862419912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862419903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3667fe35e0e005f47a25904ce55c3663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefabs:
+  - {fileID: 836188539834393273, guid: 5f90bb87a90a211448444e4057187bdd, type: 3}
+  - {fileID: 836188539834393273, guid: 39954201218bb1f41920e6298b415a7c, type: 3}
+  catalogVersion: main
   currency: CG
 --- !u!1 &1922620972
 GameObject:

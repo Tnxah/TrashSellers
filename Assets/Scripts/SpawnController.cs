@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
-public class ItemsManager : MonoBehaviour
+public class SpawnController : MonoBehaviour
 {
-    public static ItemsManager instance;
+    public static SpawnController instance;
 
     private Random rnd = new Random();
     public int spawnDelay = 30;
     public float spawnChance = 80;
-    public List<GameObject> itemPrefabs;
     public float spawnRadius = 600;
 
     private void Awake()
@@ -27,14 +26,11 @@ public class ItemsManager : MonoBehaviour
         StartCoroutine(SlowUpdate());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     IEnumerator SlowUpdate()
     {
+        var items = ItemManager.instance.itemPrefabs;
+
         while (true) { 
             var rand = rnd.Next(0, 100);
             print(rand);
@@ -42,7 +38,7 @@ public class ItemsManager : MonoBehaviour
             {
                     var position = UnityEngine.Random.insideUnitCircle * (spawnRadius);
                     Vector3 pos = PlayerScript.instance.transform.position + new Vector3(position.x, 0, position.y);
-                    Instantiate(itemPrefabs[new Random().Next(itemPrefabs.Count)], pos, Quaternion.identity);
+                    Instantiate(items[new Random().Next(items.Count)], pos, Quaternion.identity);
             
             }
 
