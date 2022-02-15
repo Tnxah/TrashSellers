@@ -21,13 +21,15 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     private void UpdateUI(string obj)
     {
+        inventory = Inventory.instance.inventory;
         print("Update UI");
-        if (lastInventorySize > Inventory.instance.inventory.Count)
+        if (lastInventorySize > inventory.Count)
         {
-            inventorySlots[obj].Decrease();
+            inventorySlots[obj].Decrease(inventory.Count - lastInventorySize);
+            return;
         }
 
-        inventory = Inventory.instance.inventory;
+        
 
         for (int i = lastInventorySize; i < inventory.Count; i++)
         {
@@ -41,6 +43,34 @@ public class InventoryUI : MonoBehaviour
             else
             {
                 inventorySlots[inventory[i].name].Increase();
+            }
+        }
+        lastInventorySize = inventory.Count;
+    }
+
+    private void UpdateUI2()
+    {
+        inventory = Inventory.instance.inventory;
+        if (lastInventorySize > inventory.Count)
+        {
+            foreach (var item in inventorySlots)
+            {
+
+            }
+            return;
+        }
+        for (int i = lastInventorySize; i < inventory.Count; i++)
+        {
+            if (!inventorySlots.ContainsKey(inventory[i].name))
+            {
+                var slot = GetFreeSlot().GetComponent<InventorySlot>();
+                slot.Add(inventory[i]);
+
+                inventorySlots.Add(inventory[i].name, slot);
+            }
+            else
+            {
+                inventorySlots[inventory[i].name].Add(inventory[i]);
             }
         }
         lastInventorySize = inventory.Count;

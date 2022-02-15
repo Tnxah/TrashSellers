@@ -4000,6 +4000,7 @@ GameObject:
   - component: {fileID: 1862419906}
   - component: {fileID: 1862419905}
   - component: {fileID: 1862419904}
+  - component: {fileID: 1862419911}
   - component: {fileID: 1862419908}
   - component: {fileID: 1862419909}
   - component: {fileID: 1862419910}
@@ -4082,8 +4083,8 @@ MonoBehaviour:
   spawnDelay: 10
   spawnChance: 80
   itemPrefabs:
-  - {fileID: 6243207003786249357, guid: 217f0e1b44cc1ca4390b3f51b7495ee4, type: 3}
-  - {fileID: 2656450837583948428, guid: 734ac4e25ec4f354aa23b7730a559152, type: 3}
+  - {fileID: 836188539834393273, guid: 39954201218bb1f41920e6298b415a7c, type: 3}
+  - {fileID: 836188539834393273, guid: 5f90bb87a90a211448444e4057187bdd, type: 3}
   spawnRadius: 500
 --- !u!114 &1862419909
 MonoBehaviour:
@@ -4112,6 +4113,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventorySize: 100
   inventory: []
+--- !u!114 &1862419911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862419903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a0ce9685bb04c46bcb05c07cd8d4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currency: CG
 --- !u!1 &1922620972
 GameObject:
   m_ObjectHideFlags: 0

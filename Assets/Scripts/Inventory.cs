@@ -30,9 +30,10 @@ public class Inventory : MonoBehaviour
         {
             inventory = new List<Object>();
         }
-    } 
+    }
 
-    private void ExpandInventory(int newSize)
+
+    private void SetInventorySize(int newSize)
     {
         this.inventorySize = newSize;
     }
@@ -56,9 +57,8 @@ public class Inventory : MonoBehaviour
     {
         if (inventory.Count <= 0)
         {
-           // return;
+           return;
         }
-        print("Remove " + inventory.Find(x => x.name.Equals(name)));
         inventory.Remove(inventory.Find(x => x.name.Equals(name)));
 
         onInventoryChangedCallback.Invoke(name);

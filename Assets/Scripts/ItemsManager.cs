@@ -5,11 +5,21 @@ using Random = System.Random;
 
 public class ItemsManager : MonoBehaviour
 {
+    public static ItemsManager instance;
+
     private Random rnd = new Random();
     public int spawnDelay = 30;
     public float spawnChance = 80;
     public List<GameObject> itemPrefabs;
     public float spawnRadius = 600;
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

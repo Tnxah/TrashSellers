@@ -5,4 +5,6 @@ using UnityEngine;
 public class Object : MonoBehaviour
 {
     public new string name;
+    public int cost;
+    
 }

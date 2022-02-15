@@ -39,12 +39,12 @@ public class InventorySlot : MonoBehaviour
         number -= num;
         if (number <= 0)
         {
-            Delete();
+            Clear();
         }
         UpdateSlot();
     }
 
-    public void Delete()
+    public void Clear()
     {
         gameObject.SetActive(false);
     }
