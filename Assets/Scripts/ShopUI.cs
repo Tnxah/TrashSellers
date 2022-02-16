@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopUI : MonoBehaviour
+public class ShopUI : MonoBehaviour, IInteractible
 {
     private IShopCustomer shopCustomer;
+    public GameObject shopUI;
 
     private void Start()
     {
-        shopCustomer = PlayerScript.instance.gameObject.GetComponent<IShopCustomer>();
     }
     public void TryBuyObject(string name)
     {
@@ -16,5 +16,11 @@ public class ShopUI : MonoBehaviour
         {
             shopCustomer.Buy(name);
         }
+    }
+
+    public void Interact()
+    {
+        shopCustomer = PlayerScript.instance.gameObject.GetComponent<IShopCustomer>();
+        shopUI.SetActive(true);
     }
 }
