@@ -48,7 +48,9 @@ public class ItemManager : MonoBehaviour
 
     public Object GetObject(string name)
     {
-        return itemPrefabs.Find(x => x.name.Equals(name)).GetComponent<Object>();
+        var obj = Instantiate(itemPrefabs.Find(x => x.name.Equals(name))).GetComponent<Object>();
+        obj.gameObject.SetActive(false);
+        return obj;
     }
 
 }

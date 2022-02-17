@@ -23,4 +23,9 @@ public class ShopUI : MonoBehaviour, IInteractible
         shopCustomer = PlayerScript.instance.gameObject.GetComponent<IShopCustomer>();
         shopUI.SetActive(true);
     }
+
+    public void OnCloseButton()
+    {
+        shopUI.SetActive(false);
+    }
 }
