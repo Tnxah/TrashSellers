@@ -30,9 +30,6 @@ public class InventoryUI : MonoBehaviour
         }
         else
         {
-
-
-
             for (int i = lastInventorySize; i < inventory.Count; i++)
             {
                 if (!inventorySlots.ContainsKey(inventory[i].name))

@@ -88,7 +88,6 @@ public class GPS : MonoBehaviour
                 yield break;
             }
 
-            print("here");
             UpdateCoordinates();
         }
 
@@ -103,7 +102,6 @@ public class GPS : MonoBehaviour
     {
         if (!HardCodeCoordinates && coordinatesReady && Time.time > (updateDelay + lastUpdate))
         {
-            print("here 2");
             UpdateCoordinates();
 
             coordinatesText.text = "lat: " + latitude + "\n" + "lon: " + longitude;

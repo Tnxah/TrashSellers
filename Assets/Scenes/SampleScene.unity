@@ -4808,6 +4808,7 @@ MonoBehaviour:
   itemPrefabs:
   - {fileID: 4777931205877617879, guid: 5f90bb87a90a211448444e4057187bdd, type: 3}
   - {fileID: 3441996029972524637, guid: 39954201218bb1f41920e6298b415a7c, type: 3}
+  - {fileID: 6175948538650007042, guid: 0dea25878d0501b4bbf4f814b12d5fda, type: 3}
   catalogVersion: main
   currency: CG
 --- !u!1 &1922620972

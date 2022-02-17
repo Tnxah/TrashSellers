@@ -35,7 +35,7 @@ public class ItemManager : MonoBehaviour
                 List<CatalogItem> items = result.Catalog;              
                 foreach (var item in items)
                 {
-                    var prefab = itemPrefabs.Find(x => x.name.Equals(item.ItemId))?.GetComponent<Item>();
+                    var prefab = itemPrefabs.Find(x => x.name.Equals(item.ItemId))?.GetComponent<Object>();
                     prefab.cost = (int)item.VirtualCurrencyPrices[currency];
                     prefab.description = item.Description;
                 }
