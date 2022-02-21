@@ -63,4 +63,16 @@ public class Inventory : MonoBehaviour
 
         onInventoryChangedCallback.Invoke(name);
     }
+
+    public bool DoesInventoryContains(string name)
+    {
+
+        if (inventory.Find(x => x.name.Equals(name)))
+        {
+            return true;
+        }
+
+        return false;
+
+    }
 }

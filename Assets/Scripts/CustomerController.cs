@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomerController : MonoBehaviour, IShopCustomer
+public class CustomerController : MonoBehaviour, IShopCustomer, ISellshopCustomer
 {
     private PlayerScript player;
-
+    public int taxPercent;
 
     private void Start()
     {
@@ -14,10 +14,26 @@ public class CustomerController : MonoBehaviour, IShopCustomer
 
     public void Buy(string name)
     {
-        print(ItemManager.instance.GetObject(name));
         player.inventory.Add(ItemManager.instance.GetObject(name));
     }
 
+    public void Sell(string name)
+    { int calculatedCost;
+        if (Inventory.instance.DoesInventoryContains(name))
+        {
+
+            calculatedCost = ItemManager.instance.GetObject(name).cost * (100 - taxPercent)/100; 
+
+            player.inventory.Remove(name);
+            Earn(calculatedCost);
+        }
+        
+    }
+
+    public void Earn(int amount)
+    {
+        player.money += amount;
+    }
     public bool TryToPay(int amount)
     {
         
