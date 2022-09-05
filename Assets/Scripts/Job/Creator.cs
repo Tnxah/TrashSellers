@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class Creator : Job
     {
         type = JobType.Creator;
         level = PlayfabStatisticsManager.GetStat(StatisticsKeys.creatorLevelKey);
+        unlocked = Convert.ToBoolean(PlayfabStatisticsManager.GetStat(StatisticsKeys.creatorUnlockedKey));
     }
 
     public override void ApplyJobProperties()
@@ -18,6 +20,7 @@ public class Creator : Job
     public override bool Unlock()
     {
         unlocked = true;
+        PlayfabStatisticsManager.SaveStat(StatisticsKeys.creatorUnlockedKey, Convert.ToInt32(unlocked));
         return unlocked;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class Trader : Job
     {
         type = JobType.Trader;
         level = PlayfabStatisticsManager.GetStat(StatisticsKeys.traderLevelKey);
+        unlocked = Convert.ToBoolean(PlayfabStatisticsManager.GetStat(StatisticsKeys.traderUnlockedKey));
     }
 
     public override void ApplyJobProperties()
@@ -22,7 +24,10 @@ public class Trader : Job
         var playerLevel = PlayfabStatisticsManager.GetStat(StatisticsKeys.playerLevelKey);
 
         if (!unlocked && playerLevel >= unlockLevel)
+        {
             unlocked = true;
+            PlayfabStatisticsManager.SaveStat(StatisticsKeys.traderUnlockedKey, Convert.ToInt32(unlocked));
+        }
 
         return unlocked;
     }

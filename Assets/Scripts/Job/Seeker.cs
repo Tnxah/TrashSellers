@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class Seeker : Job
     {
         type = JobType.Seeker;
         level = PlayfabStatisticsManager.GetStat(StatisticsKeys.seekerLevelKey);
+        unlocked = Convert.ToBoolean(PlayfabStatisticsManager.GetStat(StatisticsKeys.seekerUnlockedKey));
     }
 
     public override void ApplyJobProperties()
@@ -23,7 +25,10 @@ public class Seeker : Job
         var playerLevel = PlayfabStatisticsManager.GetStat(StatisticsKeys.playerLevelKey);
 
         if (playerLevel >= 2)
+        {
             unlocked = true;
+            PlayfabStatisticsManager.SaveStat(StatisticsKeys.seekerUnlockedKey, Convert.ToInt32(unlocked));
+        }
 
         return unlocked;
     }
