@@ -18,6 +18,18 @@ public class Seeker : Job
     public override void ApplyJobProperties()
     {
         SpawnController.instance.spawnChance = 50 * spawnChanceMultiplyer[level];
+        Debug.Log(level);
+    }
+
+    public override void LevelUp()
+    {
+        level++;
+
+        ApplyJobProperties();
+
+        //GetReward();
+
+        PlayfabStatisticsManager.SaveStat(StatisticsKeys.seekerLevelKey, level);
     }
 
     public override bool Unlock()

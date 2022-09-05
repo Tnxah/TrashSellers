@@ -19,6 +19,7 @@ public abstract class Job
 
 
     public abstract void ApplyJobProperties();
+    public abstract void LevelUp();
 
     public bool IsUnlocked()
     {

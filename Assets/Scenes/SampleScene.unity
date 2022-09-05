@@ -5169,8 +5169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba560175c8959842a76c46b6fb59ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 35
-  spawnChance: 70
+  spawnDelay: 30
+  spawnChance: 50
   spawnRadius: 400
 --- !u!114 &1862419909
 MonoBehaviour:

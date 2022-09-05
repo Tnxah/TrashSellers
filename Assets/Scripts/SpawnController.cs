@@ -9,7 +9,7 @@ public class SpawnController : MonoBehaviour
 
     private Random rnd = new Random();
     public int spawnDelay = 30;
-    public float spawnChance = 80;
+    public float spawnChance = 50;
     public float spawnRadius = 600;
 
     private void Awake()

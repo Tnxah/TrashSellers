@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayfabStatisticsManager
 {
-    public static List<StatisticValue> statistics;
+    public static List<StatisticValue> statistics = statistics = new List<StatisticValue>();
 
     public static bool loaded = false;
 
@@ -21,7 +21,6 @@ public class PlayfabStatisticsManager
 
     public static void OnGetStatistics(GetPlayerStatisticsResult result)
     {
-        statistics = new List<StatisticValue>();
         statistics = result.Statistics;
 
         Debug.Log("Received the following Statistics:");
@@ -33,13 +32,26 @@ public class PlayfabStatisticsManager
 
     public static int GetStat(string statisticKey)
     {
-        if (!loaded)
+        //if (!loaded)
             LoadStatistics();
 
-        return statistics.Find(stat => stat.StatisticName == statisticKey).Value;
+        var statistic = statistics.Find(stat => stat.StatisticName == statisticKey);
+
+        //if (statistic == null) { 
+
+        //    SaveStat(statisticKey, 0);
+        //    return 0;
+        //}
+        Debug.Log(statisticKey);
+        return statistic.Value;
     }
 
-    public static void SaveStat(string statisticKey, int value)
+    public static IEnumerator GetStat()
+    {
+        yield return new WaitUntil( () => true);
+    }
+
+    public static void SaveStat(string statisticKey, int value = 0)
     {
         PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
         {
@@ -47,7 +59,7 @@ public class PlayfabStatisticsManager
             new StatisticUpdate { StatisticName = statisticKey, Value = value },
             }
         },
-        result => { Debug.Log("User statistics updated"); },
+        result => { Debug.Log("User statistics updated " + $"({statisticKey})"); },
         error => { Debug.LogError(error.GenerateErrorReport()); });
     }
 }

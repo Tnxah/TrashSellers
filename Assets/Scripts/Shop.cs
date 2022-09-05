@@ -15,18 +15,9 @@ public class Shop : MonoBehaviour
             instance = this;
         }
 
-        LoginWithEmailAddressRequest request = new LoginWithEmailAddressRequest();
-        request.Email = "tnxah.j@gmail.com";
-        request.Password = "123123123";
-        
-        PlayFabClientAPI.LoginWithEmailAddress(request, result => {
-            UpdateCatalogItems(); 
-        }, error => {
-            print(error.ErrorMessage);        
-        });
     }
 
-    private void UpdateCatalogItems()
+    public void UpdateCatalogItems()
     {
         ItemManager.instance.InitObjects();
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class JobManager : MonoBehaviour
@@ -11,18 +12,33 @@ public class JobManager : MonoBehaviour
     public delegate void JobsCallback();
     public static JobsCallback onJobChanged;
     public static JobsCallback onJobUnlock;
-    private void FillJobs()
+
+    //public static JobManager instance;
+
+    //private void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //    }
+    //}
+
+    private static void FillJobs()
     {
+        jobs = new Dictionary<JobType, Job>();
+
         jobs.Add(JobType.Trader, new Trader()); //0
         jobs.Add(JobType.Creator, new Creator()); //1
         jobs.Add(JobType.Seeker, new Seeker()); //2
     }
 
-    public void Init()
+    public static void Init()
     {
         FillJobs();
         LoadJob();
     }
+
+    
 
     private static void LoadJob()
     {
@@ -47,7 +63,7 @@ public class JobManager : MonoBehaviour
 
     public static bool ChangeJobTo(JobType type)
     {
-        if (!jobs[type].IsUnlocked() || currentJob.GetJobType() == type)
+        if (!jobs[type].IsUnlocked() || currentJob?.GetJobType() == type)
         {
             return false;
         }

@@ -14,7 +14,18 @@ public class Creator : Job
 
     public override void ApplyJobProperties()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
+    }
+
+    public override void LevelUp()
+    {
+        level++;
+
+        ApplyJobProperties();
+
+        //GetReward();
+
+        PlayfabStatisticsManager.SaveStat(StatisticsKeys.creatorLevelKey, level);
     }
 
     public override bool Unlock()
