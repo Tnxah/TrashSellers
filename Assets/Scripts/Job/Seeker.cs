@@ -7,12 +7,18 @@ public class Seeker : Job
 {
     private float[] spawnChanceMultiplyer = {1f, 1.1f, 1.2f, 1.3f};
 
+    private int[] levelUps = {0, 100, 500, 600, 1200};
+
+    private int itemsCollected;
 
     public Seeker()
     {
         type = JobType.Seeker;
         level = PlayfabStatisticsManager.GetStat(StatisticsKeys.seekerLevelKey);
         unlocked = Convert.ToBoolean(PlayfabStatisticsManager.GetStat(StatisticsKeys.seekerUnlockedKey));
+        itemsCollected = PlayfabStatisticsManager.GetStat(StatisticsKeys.itemsCollectedKey);
+
+        Inventory.instance.onInventoryIncreasedCallback += OnItemCollected;
     }
 
     public override void ApplyJobProperties()
@@ -43,5 +49,19 @@ public class Seeker : Job
         }
 
         return unlocked;
+    }
+
+    public void OnItemCollected()
+    {
+        Debug.Log("item collected");
+
+        itemsCollected++;
+
+        PlayfabStatisticsManager.SaveStat(StatisticsKeys.itemsCollectedKey, itemsCollected);
+
+        if (level < levelUps.Length && itemsCollected >= levelUps[level + 1])
+        {
+            LevelUp();  
+        }
     }
 }

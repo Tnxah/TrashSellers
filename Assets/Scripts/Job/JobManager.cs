@@ -43,6 +43,7 @@ public class JobManager : MonoBehaviour
     private static void LoadJob()
     {
         currentJob = jobs[(JobType)PlayfabStatisticsManager.GetStat(StatisticsKeys.currentJobKey)];
+        currentJob.ApplyJobProperties();
     }
 
     public static bool TryToUnlock(JobType type)

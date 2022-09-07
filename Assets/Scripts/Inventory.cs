@@ -13,6 +13,8 @@ public class Inventory : MonoBehaviour
 
     public delegate void OnInventoryChanged(string name);
     public OnInventoryChanged onInventoryChangedCallback;
+    public delegate void OnInventoryIncreased();
+    public OnInventoryIncreased onInventoryIncreasedCallback;
 
     private void Awake()
     {
@@ -40,6 +42,7 @@ public class Inventory : MonoBehaviour
 
     public void Add(Object obj)
     {
+        print("Inventory add");
         if (inventory.Count >= inventorySize)
         {
             return;
@@ -49,7 +52,7 @@ public class Inventory : MonoBehaviour
         
         
         onInventoryChangedCallback.Invoke(obj.name);
-        //Destroy(obj.gameObject);
+        onInventoryIncreasedCallback.Invoke();
         obj.gameObject.SetActive(false);
     }
 

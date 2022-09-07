@@ -37,11 +37,12 @@ public class PlayfabStatisticsManager
 
         var statistic = statistics.Find(stat => stat.StatisticName == statisticKey);
 
-        //if (statistic == null) { 
+        if (statistic == null)
+        {
 
-        //    SaveStat(statisticKey, 0);
-        //    return 0;
-        //}
+            SaveStat(statisticKey, 0);
+            return 0;
+        }
         Debug.Log(statisticKey);
         return statistic.Value;
     }
